@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <!-- <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <!--api для яндекс карт-->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=32fbe3c1-e60c-48ff-9744-7ef1e77d1911" type="text/javascript"></script>
+    <!-- шрифты-->
+    <link rel="stylesheet" href="fonts/stylesheet.css">
+    <!-- noUiSlider-->
+    <link rel="stylesheet" href="css/nouislider.min.css">
+    <!-- swiper -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <!-- css стили-->
+    <link rel="stylesheet" href="css/main.css">
+    <title>TikiTomi</title>
+  </head>
+  <body>
+    <!-- header-->
+    <!-- чтобы получить header для зарег-ых пользователей надо добавить .reg-user-->
+    <header class="header">
+      <div class="header-top">
+        <div class="content-wrapper">
+          <div class="header-top__city js_header_top_city open-popup-city">
+            <svg class="header-top__city-icon" width="18" height="26" viewbox="0 0 18 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.00018 23.6954C8.85407 23.512 8.69056 23.3041 8.51297 23.0744C7.75832 22.098 6.75354 20.732 5.75056 19.1711C4.74585 17.6075 3.75423 15.8658 3.01655 14.1369C2.27366 12.3957 1.81836 10.7363 1.81836 9.3182C1.81836 5.07441 5.0745 1.72729 9.00018 1.72729C12.9259 1.72729 16.182 5.07441 16.182 9.3182C16.182 10.7363 15.7267 12.3957 14.9838 14.1369C14.2461 15.8658 13.2545 17.6075 12.2498 19.1711C11.2468 20.732 10.242 22.098 9.48739 23.0744C9.3098 23.3041 9.14629 23.512 9.00018 23.6954ZM6.20982 12.1774C6.94117 12.9453 7.9438 13.3864 9.00018 13.3864C10.0566 13.3864 11.0592 12.9453 11.7905 12.1774C12.5203 11.4111 12.9223 10.3818 12.9223 9.3182C12.9223 8.25457 12.5203 7.22527 11.7905 6.45902C11.0592 5.6911 10.0566 5.25002 9.00018 5.25002C7.9438 5.25002 6.94117 5.6911 6.20982 6.45902C5.48005 7.22527 5.0781 8.25457 5.0781 9.3182C5.0781 10.3818 5.48005 11.4111 6.20982 12.1774Z" stroke="#489ED7" stroke-width="2"></path>
+            </svg><span>Петропаловск-Камчатский</span>
+          </div>
+          <ul class="header-top__buttons">
+            <li class="header-top__buttons-item more"><span>Еще</span></li>
+            <li class="header-top__buttons-item js_header_top_buttons_item"><span>Информация  </span>
+              <ul class="header-top__buttons-item-popup js_header_top_buttons_item_popup">
+                <li> <a href="#">Личные данные</a></li>
+                <li> <a href="#">Мои бонусы</a></li>
+                <li> <a href="#">Мои заказы</a></li>
+                <li> <a href="#">Мои дети</a></li>
+                <li> <a href="#">Адреса доставки</a></li>
+                <li> <a href="#">Избранное</a></li>
+              </ul>
+            </li>
+            <li class="header-top__buttons-item js_header_top_buttons_item"><span>Компания</span>
+              <ul class="header-top__buttons-item-popup js_header_top_buttons_item_popup">
+                <li> <a href="#">Личные данные</a></li>
+                <li> <a href="#">Мои бонусы</a></li>
+                <li> <a href="#">Мои заказы</a></li>
+                <li> <a href="#">Мои дети</a></li>
+                <li> <a href="#">Политика конфиденциальности</a></li>
+                <li> <a href="#">Избранное</a></li>
+              </ul>
+            </li>
+            <li class="header-top__buttons-item js_header_top_buttons_item"><span>Вопросы и ответы</span>
+              <ul class="header-top__buttons-item-popup js_header_top_buttons_item_popup">
+                <li> <a href="#">Личные данные</a></li>
+                <li> <a href="#">Мои бонусы</a></li>
+                <li> <a href="#">Мои заказы</a></li>
+                <li> <a href="#">Мои дети</a></li>
+                <li> <a href="#">Адреса доставки</a></li>
+                <li> <a href="#">Избранное</a></li>
+              </ul>
+            </li>
+            <li class="header-top__buttons-item"> <a href="#">Бонусная программа</a></li>
+          </ul>
+          <button class="header-bottom__info-status header-bottom__info-item js_bottom_info_status" arial-label="статус заказа">Статус заказа</button>
+          <div class="header-top__contacts"><a class="header-top__contacts-mail js_open_popup_write_to_us">
+              <svg viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.33366 3.33331H16.667C17.5837 3.33331 18.3337 4.08331 18.3337 4.99998V15C18.3337 15.9166 17.5837 16.6666 16.667 16.6666H3.33366C2.41699 16.6666 1.66699 15.9166 1.66699 15V4.99998C1.66699 4.08331 2.41699 3.33331 3.33366 3.33331Z" stroke="#E9477A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M18.3337 5L10.0003 10.8333L1.66699 5" stroke="#E9477A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg><span>Напишите нам</span></a><a class="header-top__contacts-phone" href="tel:88005508948">
+              <svg viewbox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.3332 14.1V16.6C17.3341 16.8321 17.2866 17.0618 17.1936 17.2744C17.1006 17.4871 16.9643 17.678 16.7933 17.8349C16.6222 17.9918 16.4203 18.1112 16.2005 18.1856C15.9806 18.2599 15.7477 18.2875 15.5165 18.2666C12.9522 17.988 10.489 17.1118 8.32486 15.7083C6.31139 14.4289 4.60431 12.7218 3.32486 10.7083C1.91651 8.53432 1.04007 6.05914 0.76653 3.48331C0.745705 3.25287 0.773092 3.02061 0.846947 2.80133C0.920801 2.58205 1.03951 2.38055 1.1955 2.20966C1.3515 2.03877 1.54137 1.90224 1.75302 1.80875C1.96468 1.71526 2.19348 1.66686 2.42486 1.66665H4.92486C5.32928 1.66267 5.72136 1.80588 6.028 2.06959C6.33464 2.3333 6.53493 2.69952 6.59153 3.09998C6.69705 3.90003 6.89274 4.68558 7.17486 5.44165C7.28698 5.73992 7.31125 6.06407 7.24478 6.37571C7.17832 6.68735 7.02392 6.9734 6.79986 7.19998L5.74153 8.25831C6.92783 10.3446 8.65524 12.072 10.7415 13.2583L11.7999 12.2C12.0264 11.9759 12.3125 11.8215 12.6241 11.7551C12.9358 11.6886 13.2599 11.7129 13.5582 11.825C14.3143 12.1071 15.0998 12.3028 15.8999 12.4083C16.3047 12.4654 16.6744 12.6693 16.9386 12.9812C17.2029 13.2931 17.3433 13.6913 17.3332 14.1Z" stroke="#E9477A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg><span>8 800 550 89 48</span></a>
+            <div class="header-top__contacts-time">
+              <svg viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.25 10C19.25 12.4533 18.2754 14.806 16.5407 16.5407C14.806 18.2754 12.4533 19.25 10 19.25C7.54675 19.25 5.19397 18.2754 3.45926 16.5407C1.72455 14.806 0.75 12.4533 0.75 10C0.75 7.54675 1.72455 5.19397 3.45926 3.45926C5.19397 1.72455 7.54675 0.75 10 0.75C12.4533 0.75 14.806 1.72455 16.5407 3.45926C18.2754 5.19397 19.25 7.54675 19.25 10Z" stroke="#E9477A" stroke-width="1.5"></path>
+                <path d="M14 14L10 10.8633V3.33331" stroke="#E9477A" stroke-width="1.5"></path>
+              </svg><span>10:00 - 20:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="content-wrapper"><a href="#"> <img class="header-bottom__logo" src="img/header-logo.svg" alt="логотип"></a><a href="#"> <img class="header-bottom__logo-mobile" src="img/header-logo-mobile.svg" alt="логотип для мобильных"></a>
+          <div class="header-bottom__info">
+            <!-- поиск лупа-->
+            <button class="header-bottom__info-search js_header_bottom_info_search" arial-label="поиск по сайту"></button>
+            <!--избранное (сердечко с цифрой)--><a class="header-bottom__info-heart header-bottom__info-item" href="#">
+              <svg width="28" height="25" viewbox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.993 0.786438C17.4133 0.786438 15.209 2.62521 13.9979 3.8929C12.7868 2.62521 10.5875 0.786438 8.00899 0.786438C3.56468 0.786438 0.461914 3.88428 0.461914 8.31875C0.461914 13.2049 4.31545 16.3631 8.04345 19.4178C9.80345 20.8615 11.625 22.3532 13.0219 24.0074C13.257 24.2843 13.6016 24.4443 13.9635 24.4443H14.0348C14.3979 24.4443 14.7413 24.2831 14.9751 24.0074C16.3745 22.3532 18.1948 20.8603 19.9561 19.4178C23.6828 16.3643 27.5388 13.2061 27.5388 8.31875C27.5388 3.88428 24.4361 0.786438 19.993 0.786438Z" fill="#E9477A"></path>
+              </svg><span>0</span></a>
+            <!--профиль-->
+            <button class="header-bottom__info-profile js_header_bottom_info_profile">
+              <svg width="27" height="31" viewbox="0 0 27 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.4996 13.125C11.9651 13.125 10.4935 12.5324 9.40846 11.4775C8.32343 10.4226 7.71387 8.99184 7.71387 7.5C7.71387 6.00816 8.32343 4.57742 9.40846 3.52252C10.4935 2.46763 11.9651 1.875 13.4996 1.875C15.034 1.875 16.5057 2.46763 17.5907 3.52252C18.6757 4.57742 19.2853 6.00816 19.2853 7.5C19.2853 8.99184 18.6757 10.4226 17.5907 11.4775C16.5057 12.5324 15.034 13.125 13.4996 13.125Z" stroke-width="3.375" stroke-linecap="round"></path>
+                <path d="M1.92773 28.125V26.25C1.92773 24.2609 2.74049 22.3532 4.1872 20.9467C5.6339 19.5402 7.59606 18.75 9.64202 18.75H17.3563C19.4023 18.75 21.3644 19.5402 22.8111 20.9467C24.2578 22.3532 25.0706 24.2609 25.0706 26.25V28.125" stroke-width="3.375" stroke-linecap="round"></path>
+              </svg>
+              <!--popup профиль-->
+              <ul class="header-bottom__info-profile-popup js_header_bottom_info_profile_popup">
+                <div class="header-bottom__info-profile-popup-title">
+                  <svg width="31" height="20" viewbox="0 0 31 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5639 0.419605C11.6978 0.552278 11.8041 0.709888 11.8766 0.883408C11.9491 1.05693 11.9864 1.24295 11.9864 1.43081C11.9864 1.61868 11.9491 1.8047 11.8766 1.97822C11.8041 2.15174 11.6978 2.30935 11.5639 2.44202L3.9509 10.0004L11.5639 17.5587C11.8339 17.8269 11.9856 18.1907 11.9856 18.5699C11.9856 18.9492 11.8339 19.313 11.5639 19.5811C11.2939 19.8493 10.9276 20 10.5458 20C10.1639 20 9.79766 19.8493 9.52763 19.5811L0.899376 11.0116C0.765456 10.8789 0.659205 10.7213 0.586709 10.5478C0.514213 10.3743 0.476898 10.1882 0.476898 10.0004C0.476898 9.81251 0.514213 9.62649 0.586709 9.45297C0.659205 9.27945 0.765456 9.12184 0.899376 8.98917L9.52763 0.419605C9.66121 0.286596 9.8199 0.181067 9.99461 0.109065C10.1693 0.037062 10.3566 4.28918e-07 10.5458 4.3713e-07C10.7349 4.45342e-07 10.9222 0.037062 11.0969 0.109065C11.2716 0.181068 11.4303 0.286596 11.5639 0.419605Z" fill="#489ED7"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M30.234 10.0003C30.234 10.3791 30.0825 10.7424 29.8128 11.0102C29.5431 11.2781 29.1774 11.4286 28.796 11.4286L3.09095 11.4286C2.70956 11.4286 2.34379 11.2781 2.0741 11.0102C1.80442 10.7424 1.65291 10.3791 1.65291 10.0003C1.65291 9.62151 1.80442 9.25822 2.0741 8.99037C2.34379 8.72252 2.70956 8.57204 3.09095 8.57204L28.796 8.57205C29.1774 8.57206 29.5431 8.72253 29.8128 8.99038C30.0825 9.25823 30.234 9.62152 30.234 10.0003Z" fill="#489ED7"></path>
+                  </svg>
+                  <h2>Мой профиль</h2>
+                </div>
+                <li> <a href="#">Личные данные</a></li>
+                <li> <a href="#">Мои бонусы</a></li>
+                <li> <a href="#">Мои заказы</a></li>
+                <li> <a href="#">Мои дети</a></li>
+                <li> <a href="#">Адреса доставки</a></li>
+                <li> <a href="#">Избранное</a></li>
+                <li> <a href="#">Выйти</a></li>
+              </ul>
+            </button>
+            <!--мои заказы--><a class="header-bottom__info-order header-bottom__info-item" href="#">
+              <svg width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.3488 2.08701C15.1249 1.9973 14.8751 1.9973 14.6512 2.08701L3.46125 6.56264L7.96875 8.36451L19.5075 3.75014L15.3488 2.08701ZM22.0312 4.76076L10.4925 9.37514L15 11.177L26.5387 6.56264L22.0312 4.76076ZM28.125 7.94826L15.9375 12.8233V27.677L28.125 22.802V7.95014V7.94826ZM14.0625 27.6789V12.8214L1.875 7.94826V22.8039L14.0625 27.6789ZM13.9556 0.345138C14.6261 0.0770114 15.3739 0.0770114 16.0444 0.345138L29.4112 5.69264C29.585 5.76229 29.734 5.88237 29.8389 6.03743C29.9439 6.19249 30 6.37541 30 6.56264V22.8039C29.9998 23.1786 29.8873 23.5446 29.6771 23.8547C29.4669 24.1648 29.1686 24.4049 28.8206 24.5439L15.3488 29.9326C15.1249 30.0223 14.8751 30.0223 14.6512 29.9326L1.18125 24.5439C0.832971 24.4052 0.534267 24.1653 0.323704 23.8551C0.113141 23.5449 0.000386867 23.1788 0 22.8039L0 6.56264C4.35749e-05 6.37541 0.0561445 6.19249 0.161076 6.03743C0.266007 5.88237 0.414961 5.76229 0.58875 5.69264L13.9556 0.345138Z" fill="#489ED7"></path>
+                <path d="M19 14.5001L25.5 12.0001V21.0001L19 23.5001V14.5001Z" fill="#489ED7"></path>
+              </svg><span>Мои заказы</span></a>
+            <!-- вход и регистрация-->
+            <button class="header-bottom__info-enter header-bottom__info-item">
+              <svg width="31" height="17" viewbox="0 0 31 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.45455 11.3333C7.70712 11.3333 6.9903 11.0348 6.46179 10.5035C5.93328 9.97212 5.63636 9.25145 5.63636 8.5C5.63636 7.74855 5.93328 7.02788 6.46179 6.49653C6.9903 5.96518 7.70712 5.66667 8.45455 5.66667C9.20197 5.66667 9.91879 5.96518 10.4473 6.49653C10.9758 7.02788 11.2727 7.74855 11.2727 8.5C11.2727 9.25145 10.9758 9.97212 10.4473 10.5035C9.91879 11.0348 9.20197 11.3333 8.45455 11.3333ZM16.4159 5.66667C15.8355 4.00985 14.7579 2.57497 13.3319 1.55998C11.9059 0.544996 10.2017 -6.48741e-05 8.45455 5.79143e-09C6.21226 5.79143e-09 4.06181 0.895533 2.47628 2.48959C0.890744 4.08365 0 6.24566 0 8.5C0 10.7543 0.890744 12.9163 2.47628 14.5104C4.06181 16.1045 6.21226 17 8.45455 17C10.2017 17.0001 11.9059 16.455 13.3319 15.44C14.7579 14.425 15.8355 12.9901 16.4159 11.3333H22.5455V17H28.1818V11.3333H31V5.66667H16.4159Z" fill="#489ED7"></path>
+              </svg><span>Вход и регистрация</span>
+            </button>
+            <!-- корзина-->
+            <button class="header-bottom__info-basket header-bottom__info-item">
+              <svg width="30" height="29" viewbox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24.2308 16.1538L28.125 5.625H16.875H5.625L7.03125 11.7188L8.48214 17.8125L24.2308 16.1538Z" fill="#679BD4"></path>
+                <path d="M25.3125 21.5625H9.375L8.48214 17.8125M1.875 1.875H4.6875L7.03125 11.7187M7.03125 11.7187L5.625 5.625H16.875H28.125L24.2308 16.1538L8.48214 17.8125M7.03125 11.7187L8.48214 17.8125M7.03125 11.7187L8.4375 17.8125H8.48214" stroke="#489ED7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M23.4375 27.1875C24.473 27.1875 25.3125 26.348 25.3125 25.3125C25.3125 24.277 24.473 23.4375 23.4375 23.4375C22.402 23.4375 21.5625 24.277 21.5625 25.3125C21.5625 26.348 22.402 27.1875 23.4375 27.1875Z" stroke="#489ED7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M11.25 27.1875C12.2855 27.1875 13.125 26.348 13.125 25.3125C13.125 24.277 12.2855 23.4375 11.25 23.4375C10.2145 23.4375 9.375 24.277 9.375 25.3125C9.375 26.348 10.2145 27.1875 11.25 27.1875Z" stroke="#489ED7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              <div class="header-bottom__info-basket-quantity">2</div><span class="header-bottom__info-basket-text">Корзина</span><span class="header-bottom__info-basket-price">11 455₽</span>
+            </button>
+            <!--кнопка статус заказа-->
+            <button class="header-bottom__info-status header-bottom__info-item js_bottom_info_status" arial-label="статус заказа">Статус заказа</button>
+            <!--кнопка перемотать страницу вверх-->
+            <button class="header-bottom__button-up js_header_bottom_button_up" arial-label="кнопка вверх страницы"><span>наверх</span>
+              <svg width="34" height="34" viewbox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 15.3333L17 10.3333M17 10.3333L22 15.3333M17 10.3333V23.6667M17 2C18.9698 2 20.9204 2.38799 22.7403 3.14181C24.5601 3.89563 26.2137 5.00052 27.6066 6.3934C28.9995 7.78628 30.1044 9.43986 30.8582 11.2597C31.612 13.0796 32 15.0302 32 17C32 18.9698 31.612 20.9204 30.8582 22.7403C30.1044 24.5601 28.9995 26.2137 27.6066 27.6066C26.2137 28.9995 24.5601 30.1044 22.7403 30.8582C20.9204 31.612 18.9698 32 17 32C13.0218 32 9.20644 30.4196 6.3934 27.6066C3.58035 24.7936 2 20.9782 2 17C2 13.0218 3.58035 9.20644 6.3934 6.3934C9.20644 3.58035 13.0218 2 17 2Z" stroke="#489ED7" stroke-width="3.16667" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- menu-->
+    <section class="menu js_menu">
+      <div class="content-wrapper">
+        <div class="menu-wrap-button">
+          <button class="menu-button js_menu_button" arial-label="открыть каталог"><span>Каталог товаров</span></button>
+          <form class="menu-form">
+            <button class="menu-form__button js_header_bottom_info_search"><span>Поиск</span>
+              <svg width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M26.6484 25.0342L19.04 17.4258C20.2207 15.8994 20.8594 14.0332 20.8594 12.0703C20.8594 9.7207 19.9424 7.51758 18.2842 5.85645C16.626 4.19531 14.417 3.28125 12.0703 3.28125C9.72363 3.28125 7.51465 4.19824 5.85645 5.85645C4.19531 7.51465 3.28125 9.7207 3.28125 12.0703C3.28125 14.417 4.19824 16.626 5.85645 18.2842C7.51465 19.9453 9.7207 20.8594 12.0703 20.8594C14.0332 20.8594 15.8965 20.2207 17.4229 19.043L25.0312 26.6484C25.0536 26.6708 25.08 26.6885 25.1092 26.7005C25.1384 26.7126 25.1696 26.7189 25.2012 26.7189C25.2327 26.7189 25.264 26.7126 25.2931 26.7005C25.3223 26.6885 25.3488 26.6708 25.3711 26.6484L26.6484 25.374C26.6708 25.3517 26.6885 25.3252 26.7005 25.2961C26.7126 25.2669 26.7189 25.2357 26.7189 25.2041C26.7189 25.1725 26.7126 25.1413 26.7005 25.1121C26.6885 25.083 26.6708 25.0565 26.6484 25.0342ZM16.7109 16.7109C15.4688 17.9502 13.8223 18.6328 12.0703 18.6328C10.3184 18.6328 8.67188 17.9502 7.42969 16.7109C6.19043 15.4688 5.50781 13.8223 5.50781 12.0703C5.50781 10.3184 6.19043 8.66895 7.42969 7.42969C8.67188 6.19043 10.3184 5.50781 12.0703 5.50781C13.8223 5.50781 15.4717 6.1875 16.7109 7.42969C17.9502 8.67188 18.6328 10.3184 18.6328 12.0703C18.6328 13.8223 17.9502 15.4717 16.7109 16.7109Z"></path>
+              </svg>
+            </button>
+          </form>
+        </div>
+        <ul class="menu-link">
+          <li class="menu-link__item"><a class="new-year" href="#">
+               Новый <br>год</a></li>
+          <li class="menu-link__item"><a href="#">Игрушки -30%</a></li>
+          <li class="menu-link__item"><a href="#">Бренды</a></li>
+          <li class="menu-link__item"><a href="#">Скидки %</a></li>
+          <li class="menu-link__item"><a href="#">Магазины</a></li>
+          <li class="menu-link__item"><a href="#">Промо-каталог</a></li>
+          <li class="menu-link__item"><a href="#">Сезонные<br>товары</a></li>
+        </ul>
+      </div>
+      <!-- выпадающее меню для десктоп-->
+      <div class="menu-dropdown js_menu_dropdown">
+        <div class="content-wrapper">
+          <ul class="menu-dropdown__list">
+            <li class="menu-dropdown__list-item js_menu_dropdown_list_item">
+              <svg height="40" width="40">
+                <use xlink:href="img/menu-sprite.svg#transport"></use>
+              </svg><span>
+                 Прогулки <br>и транспорт</span>
+            </li>
+            <li class="menu-dropdown__list-item js_menu_dropdown_list_item"> 
+              <svg height="40" width="40">
+                <use xlink:href="img/menu-sprite.svg#kids-room"></use>
+              </svg><span>
+                 Детская<br>комната</span>
+            </li>
+            <li class="menu-dropdown__list-item js_menu_dropdown_list_item"> 
+              <svg height="40" width="40">
+                <use xlink:href="img/menu-sprite.svg#diapers"></use>
+              </svg><span>
+                 Подгузники<br>и гигена</span>
+            </li>
+            <li class="menu-dropdown__list-item js_menu_dropdown_list_item"> 
+              <svg height="40" width="40">
+                <use xlink:href="img/menu-sprite.svg#food"></use>
+              </svg><span>
+                 Питание <br>и кормление</span>
+            </li>
+            <li class="menu-dropdown__list-item js_menu_dropdown_list_item"> 
+              <svg height="40" width="40">
+                <use xlink:href="img/menu-sprite.svg#creation"></use>
+              </svg><span>
+                 Творчество,<br>развитие</span>
+            </li>
+            <li class="menu-dropdown__list-item js_menu_dropdown_list_item"> 
+              <svg height="40" width="40">
+                <use xlink:href="img/menu-sprite.svg#clothing"></use>
+              </svg><span>
+                 Одежда <br>и обувь</span>
+            </li>
+            <li class="menu-dropdown__list-item js_menu_dropdown_list_item"> 
+              <svg height="40" width="40">
+                <use xlink:href="img/menu-sprite.svg#book"></use>
+              </svg><span>
+                 Книги</span>
+            </li>
+            <li class="menu-dropdown__list-item js_menu_dropdown_list_item"> 
+              <svg height="40" width="40">
+                <use xlink:href="img/menu-sprite.svg#toys"></use>
+              </svg><span>
+                 Игрушки <br>и игры</span>
+            </li>
+            <li class="menu-dropdown__list-item js_menu_dropdown_list_item"> 
+              <svg height="40" width="40">
+                <use xlink:href="img/menu-sprite.svg#chancellery"></use>
+              </svg><span>
+                 Канц.<br>товары</span>
+            </li>
+            <li class="menu-dropdown__list-item js_menu_dropdown_list_item"> 
+              <svg height="40" width="40">
+                <use xlink:href="img/menu-sprite.svg#new-yaer"></use>
+              </svg><span>
+                 Новый <br>год</span>
+            </li>
+            <li class="menu-dropdown__list-item js_menu_dropdown_list_item"> 
+              <svg height="40" width="40">
+                <use xlink:href="img/menu-sprite.svg#sport"></use>
+              </svg><span>
+                 Cпорт <br>и отдых </span>
+            </li>
+            <li class="menu-dropdown__list-item js_menu_dropdown_list_item"> 
+              <svg height="40" width="40">
+                <use xlink:href="img/menu-sprite.svg#other"></use>
+              </svg><span>
+                 Прочее</span>
+            </li>
+          </ul>
+        </div>
+        <!--sublist для Прогулки и транспорт-->
+        <div class="menu-dropdown__sublist js_menu_dropdown_sublist">
+          <div class="content-wrapper">
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Карандаши цветные,восковые,масляные</span>
+                <li><a href="#">Блочные</a></li>
+                <li><a href="#">Магнитные</a></li>
+                <li><a href="#">Лего</a></li>
+                <li><a href="#">Банчемсы</a></li>
+                <li><a href="#">Металлические</a></li>
+                <li><a href="#">Сборные игровые конструкторы</a></li>
+                <li><a href="#">Деревянные конструкторы</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Куклы и акссесуары</span>
+                <li><a href="#">Куклы классические</a></li>
+                <li><a href="#">Куклы мини</a></li>
+                <li><a href="#">Куклы модельные</a></li>
+                <li><a href="#">Одежда для кукол</a></li>
+                <li><a href="#">Коляски для кукол</a></li>
+                <li><a href="#">Мебель для кукол</a></li>
+                <li><a href="#">Кукольные дома</a></li>
+                <li><a href="#">Аксессуары для кукол</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Мягкие игрушки</span>
+                <li><a href="#">Медведи</a></li>
+                <li><a href="#">Зайцы</a></li>
+                <li><a href="#">Мягкие игрушки по размерам</a></li>
+                <li><a href="#">Мягкие интерактивные игрушки</a></li>
+                <li><a href="#">Символ года</a></li>
+                <li><a href="#">Качалки</a></li>
+                <li><a href="#">Герои</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!--sublist для Детская комната-->
+        <div class="menu-dropdown__sublist js_menu_dropdown_sublist">
+          <div class="content-wrapper"> 
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Сюжетно ролевые игры и оружие</span>
+                <li><a href="#">Игрушечное оружие</a></li>
+                <li><a href="#">Игровая посуда,продукты, кухонная и бытовая техника</a></li>
+                <li><a href="#">Профессии и сюжетно-ролевые игры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Музыкальные инструменты</span></ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игровые наборы и фигурки</span>
+                <li><a href="#">Животные, птицы, рыбы и рептилии</a></li>
+                <li><a href="#">Солдатики и игровые военные наборы</a></li>
+                <li><a href="#">Фигуры (герои) из мультфильмов</a></li>
+                <li><a href="#">Роботы и трансформеры</a></li>
+                <li><a href="#">Фигурки и наборы для девочек</a></li>
+                <li><a href="#">Фигурки и наборы для мальчиков</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Электроника</span>
+                <li><a href="#">Телефоны, планшеты, ноутбуки, электронные плакаты</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Головоломки</span></ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Конструкторы</span>
+                <li><a href="#">Блочные</a></li>
+                <li><a href="#">Магнитные</a></li>
+                <li><a href="#">Лего</a></li>
+                <li><a href="#">Банчемсы</a></li>
+                <li><a href="#">Металлические</a></li>
+                <li><a href="#">Сборные игровые конструкторы</a></li>
+                <li><a href="#">Деревянные конструкторы</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Куклы и акссесуары</span>
+                <li><a href="#">Куклы классические</a></li>
+                <li><a href="#">Куклы мини</a></li>
+                <li><a href="#">Куклы модельные</a></li>
+                <li><a href="#">Одежда для кукол</a></li>
+                <li><a href="#">Коляски для кукол</a></li>
+                <li><a href="#">Мебель для кукол</a></li>
+                <li><a href="#">Кукольные дома</a></li>
+                <li><a href="#">Аксессуары для кукол</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Мягкие игрушки</span>
+                <li><a href="#">Медведи</a></li>
+                <li><a href="#">Зайцы</a></li>
+                <li><a href="#">Мягкие игрушки по размерам</a></li>
+                <li><a href="#">Мягкие интерактивные игрушки</a></li>
+                <li><a href="#">Символ года</a></li>
+                <li><a href="#">Качалки</a></li>
+                <li><a href="#">Герои</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игрушки для малышей</span>
+                <li><a href="#">Игрушечный транспорт</a></li>
+                <li><a href="#">Развивающие коврики</a></li>
+                <li><a href="#">Игрушки для для кроватки</a></li>
+                <li><a href="#">Погремушки</a></li>
+                <li><a href="#">Игрушки и каталки</a></li>
+                <li><a href="#">Развивающие интерактивные игрушки</a></li>
+                <li><a href="#">Сортеры, шнуровки, бизиборды                        </a></li>
+                <li><a href="#">Вертолеты, самолеты, катера, корабли космическая техника </a></li>
+                <li><a href="#">Гаражи, парковки, треки</a></li>
+                <li><a href="#">Коллекционные машинки</a></li>
+                <li><a href="#">Железная дорога</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Радиоуправляемые игрушки</span>
+                <li><a href="#">Транспорт воздушный радиоуправляемый</a></li>
+                <li><a href="#">Транспорт наземный радиоуправляемый</a></li>
+                <li><a href="#">Игрушки радиоуправляемые прочие</a></li>
+                <li><a href="#">Транспорт водный радиоуправляемый</a></li>
+                <li><a href="#">Роботы радиоуправляемые</a></li>
+                <li><a href="#">Квадрокоптеры</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!--sublist для Подгузники и гигена-->
+        <div class="menu-dropdown__sublist js_menu_dropdown_sublist">
+          <div class="content-wrapper">
+            <div class="menu-dropdown__sublist-row">
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Мягкие игрушки</span>
+                <li><a href="#">Медведи</a></li>
+                <li><a href="#">Зайцы</a></li>
+                <li><a href="#">Мягкие игрушки по размерам</a></li>
+                <li><a href="#">Мягкие интерактивные игрушки</a></li>
+                <li><a href="#">Символ года</a></li>
+                <li><a href="#">Качалки</a></li>
+                <li><a href="#">Герои</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игрушки для малышей</span>
+                <li><a href="#">Игрушечный транспорт</a></li>
+                <li><a href="#">Развивающие коврики</a></li>
+                <li><a href="#">Игрушки для для кроватки</a></li>
+                <li><a href="#">Погремушки</a></li>
+                <li><a href="#">Игрушки и каталки</a></li>
+                <li><a href="#">Развивающие интерактивные игрушки</a></li>
+                <li><a href="#">Сортеры, шнуровки, бизиборды                        </a></li>
+                <li><a href="#">Вертолеты, самолеты, катера, корабли космическая техника </a></li>
+                <li><a href="#">Гаражи, парковки, треки</a></li>
+                <li><a href="#">Коллекционные машинки</a></li>
+                <li><a href="#">Железная дорога</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Радиоуправляемые игрушки</span>
+                <li><a href="#">Транспорт воздушный радиоуправляемый</a></li>
+                <li><a href="#">Транспорт наземный радиоуправляемый</a></li>
+                <li><a href="#">Игрушки радиоуправляемые прочие</a></li>
+                <li><a href="#">Транспорт водный радиоуправляемый</a></li>
+                <li><a href="#">Роботы радиоуправляемые</a></li>
+                <li><a href="#">Квадрокоптеры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Конструкторы</span>
+                <li><a href="#">Блочные</a></li>
+                <li><a href="#">Магнитные</a></li>
+                <li><a href="#">Лего</a></li>
+                <li><a href="#">Банчемсы</a></li>
+                <li><a href="#">Металлические</a></li>
+                <li><a href="#">Сборные игровые конструкторы</a></li>
+                <li><a href="#">Деревянные конструкторы</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Куклы и акссесуары</span>
+                <li><a href="#">Куклы классические</a></li>
+                <li><a href="#">Куклы мини</a></li>
+                <li><a href="#">Куклы модельные</a></li>
+                <li><a href="#">Одежда для кукол</a></li>
+                <li><a href="#">Коляски для кукол</a></li>
+                <li><a href="#">Мебель для кукол</a></li>
+                <li><a href="#">Кукольные дома</a></li>
+                <li><a href="#">Аксессуары для кукол</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Сюжетно ролевые игры и оружие</span>
+                <li><a href="#">Игрушечное оружие</a></li>
+                <li><a href="#">Игровая посуда,продукты, кухонная и бытовая техника</a></li>
+                <li><a href="#">Профессии и сюжетно-ролевые игры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Музыкальные инструменты</span></ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игровые наборы и фигурки</span>
+                <li><a href="#">Животные, птицы, рыбы и рептилии</a></li>
+                <li><a href="#">Солдатики и игровые военные наборы</a></li>
+                <li><a href="#">Фигуры (герои) из мультфильмов</a></li>
+                <li><a href="#">Роботы и трансформеры</a></li>
+                <li><a href="#">Фигурки и наборы для девочек</a></li>
+                <li><a href="#">Фигурки и наборы для мальчиков</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Электроника</span>
+                <li><a href="#">Телефоны, планшеты, ноутбуки, электронные плакаты</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Головоломки</span></ul>
+            </div>
+          </div>
+        </div>
+        <!--sublist для Питание и кормление-->
+        <div class="menu-dropdown__sublist js_menu_dropdown_sublist">
+          <div class="content-wrapper">
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Конструкторы</span>
+                <li><a href="#">Блочные</a></li>
+                <li><a href="#">Магнитные</a></li>
+                <li><a href="#">Лего</a></li>
+                <li><a href="#">Банчемсы</a></li>
+                <li><a href="#">Металлические</a></li>
+                <li><a href="#">Сборные игровые конструкторы</a></li>
+                <li><a href="#">Деревянные конструкторы</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Куклы и акссесуары</span>
+                <li><a href="#">Куклы классические</a></li>
+                <li><a href="#">Куклы мини</a></li>
+                <li><a href="#">Куклы модельные</a></li>
+                <li><a href="#">Одежда для кукол</a></li>
+                <li><a href="#">Коляски для кукол</a></li>
+                <li><a href="#">Мебель для кукол</a></li>
+                <li><a href="#">Кукольные дома</a></li>
+                <li><a href="#">Аксессуары для кукол</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Мягкие игрушки</span>
+                <li><a href="#">Медведи</a></li>
+                <li><a href="#">Зайцы</a></li>
+                <li><a href="#">Мягкие игрушки по размерам</a></li>
+                <li><a href="#">Мягкие интерактивные игрушки</a></li>
+                <li><a href="#">Символ года</a></li>
+                <li><a href="#">Качалки</a></li>
+                <li><a href="#">Герои</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игрушки для малышей</span>
+                <li><a href="#">Игрушечный транспорт</a></li>
+                <li><a href="#">Развивающие коврики</a></li>
+                <li><a href="#">Игрушки для для кроватки</a></li>
+                <li><a href="#">Погремушки</a></li>
+                <li><a href="#">Игрушки и каталки</a></li>
+                <li><a href="#">Развивающие интерактивные игрушки</a></li>
+                <li><a href="#">Сортеры, шнуровки, бизиборды                        </a></li>
+                <li><a href="#">Вертолеты, самолеты, катера, корабли космическая техника </a></li>
+                <li><a href="#">Гаражи, парковки, треки</a></li>
+                <li><a href="#">Коллекционные машинки</a></li>
+                <li><a href="#">Железная дорога</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Радиоуправляемые игрушки</span>
+                <li><a href="#">Транспорт воздушный радиоуправляемый</a></li>
+                <li><a href="#">Транспорт наземный радиоуправляемый</a></li>
+                <li><a href="#">Игрушки радиоуправляемые прочие</a></li>
+                <li><a href="#">Транспорт водный радиоуправляемый</a></li>
+                <li><a href="#">Роботы радиоуправляемые</a></li>
+                <li><a href="#">Квадрокоптеры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Сюжетно ролевые игры и оружие</span>
+                <li><a href="#">Игрушечное оружие</a></li>
+                <li><a href="#">Игровая посуда,продукты, кухонная и бытовая техника</a></li>
+                <li><a href="#">Профессии и сюжетно-ролевые игры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Музыкальные инструменты</span></ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игровые наборы и фигурки</span>
+                <li><a href="#">Животные, птицы, рыбы и рептилии</a></li>
+                <li><a href="#">Солдатики и игровые военные наборы</a></li>
+                <li><a href="#">Фигуры (герои) из мультфильмов</a></li>
+                <li><a href="#">Роботы и трансформеры</a></li>
+                <li><a href="#">Фигурки и наборы для девочек</a></li>
+                <li><a href="#">Фигурки и наборы для мальчиков</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Электроника</span>
+                <li><a href="#">Телефоны, планшеты, ноутбуки, электронные плакаты</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Головоломки</span></ul>
+            </div>
+          </div>
+        </div>
+        <!--sublist для Творчество, развитие-->
+        <div class="menu-dropdown__sublist js_menu_dropdown_sublist">
+          <div class="content-wrapper"> 
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Сюжетно ролевые игры и оружие</span>
+                <li><a href="#">Игрушечное оружие</a></li>
+                <li><a href="#">Игровая посуда,продукты, кухонная и бытовая техника</a></li>
+                <li><a href="#">Профессии и сюжетно-ролевые игры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Музыкальные инструменты</span></ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игровые наборы и фигурки</span>
+                <li><a href="#">Животные, птицы, рыбы и рептилии</a></li>
+                <li><a href="#">Солдатики и игровые военные наборы</a></li>
+                <li><a href="#">Фигуры (герои) из мультфильмов</a></li>
+                <li><a href="#">Роботы и трансформеры</a></li>
+                <li><a href="#">Фигурки и наборы для девочек</a></li>
+                <li><a href="#">Фигурки и наборы для мальчиков</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Электроника</span>
+                <li><a href="#">Телефоны, планшеты, ноутбуки, электронные плакаты</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Головоломки</span></ul>
+            </div>
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Конструкторы</span>
+                <li><a href="#">Блочные</a></li>
+                <li><a href="#">Магнитные</a></li>
+                <li><a href="#">Лего</a></li>
+                <li><a href="#">Банчемсы</a></li>
+                <li><a href="#">Металлические</a></li>
+                <li><a href="#">Сборные игровые конструкторы</a></li>
+                <li><a href="#">Деревянные конструкторы</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Куклы и акссесуары</span>
+                <li><a href="#">Куклы классические</a></li>
+                <li><a href="#">Куклы мини</a></li>
+                <li><a href="#">Куклы модельные</a></li>
+                <li><a href="#">Одежда для кукол</a></li>
+                <li><a href="#">Коляски для кукол</a></li>
+                <li><a href="#">Мебель для кукол</a></li>
+                <li><a href="#">Кукольные дома</a></li>
+                <li><a href="#">Аксессуары для кукол</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Мягкие игрушки</span>
+                <li><a href="#">Медведи</a></li>
+                <li><a href="#">Зайцы</a></li>
+                <li><a href="#">Мягкие игрушки по размерам</a></li>
+                <li><a href="#">Мягкие интерактивные игрушки</a></li>
+                <li><a href="#">Символ года</a></li>
+                <li><a href="#">Качалки</a></li>
+                <li><a href="#">Герои</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игрушки для малышей</span>
+                <li><a href="#">Игрушечный транспорт</a></li>
+                <li><a href="#">Развивающие коврики</a></li>
+                <li><a href="#">Игрушки для для кроватки</a></li>
+                <li><a href="#">Погремушки</a></li>
+                <li><a href="#">Игрушки и каталки</a></li>
+                <li><a href="#">Развивающие интерактивные игрушки</a></li>
+                <li><a href="#">Сортеры, шнуровки, бизиборды                        </a></li>
+                <li><a href="#">Вертолеты, самолеты, катера, корабли космическая техника </a></li>
+                <li><a href="#">Гаражи, парковки, треки</a></li>
+                <li><a href="#">Коллекционные машинки</a></li>
+                <li><a href="#">Железная дорога</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Радиоуправляемые игрушки</span>
+                <li><a href="#">Транспорт воздушный радиоуправляемый</a></li>
+                <li><a href="#">Транспорт наземный радиоуправляемый</a></li>
+                <li><a href="#">Игрушки радиоуправляемые прочие</a></li>
+                <li><a href="#">Транспорт водный радиоуправляемый</a></li>
+                <li><a href="#">Роботы радиоуправляемые</a></li>
+                <li><a href="#">Квадрокоптеры</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!--sublist для Одежда и обувь-->
+        <div class="menu-dropdown__sublist js_menu_dropdown_sublist">
+          <div class="content-wrapper">
+            <div class="menu-dropdown__sublist-row">
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Мягкие игрушки</span>
+                <li><a href="#">Медведи</a></li>
+                <li><a href="#">Зайцы</a></li>
+                <li><a href="#">Мягкие игрушки по размерам</a></li>
+                <li><a href="#">Мягкие интерактивные игрушки</a></li>
+                <li><a href="#">Символ года</a></li>
+                <li><a href="#">Качалки</a></li>
+                <li><a href="#">Герои</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игрушки для малышей</span>
+                <li><a href="#">Игрушечный транспорт</a></li>
+                <li><a href="#">Развивающие коврики</a></li>
+                <li><a href="#">Игрушки для для кроватки</a></li>
+                <li><a href="#">Погремушки</a></li>
+                <li><a href="#">Игрушки и каталки</a></li>
+                <li><a href="#">Развивающие интерактивные игрушки</a></li>
+                <li><a href="#">Сортеры, шнуровки, бизиборды                        </a></li>
+                <li><a href="#">Вертолеты, самолеты, катера, корабли космическая техника </a></li>
+                <li><a href="#">Гаражи, парковки, треки</a></li>
+                <li><a href="#">Коллекционные машинки</a></li>
+                <li><a href="#">Железная дорога</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Радиоуправляемые игрушки</span>
+                <li><a href="#">Транспорт воздушный радиоуправляемый</a></li>
+                <li><a href="#">Транспорт наземный радиоуправляемый</a></li>
+                <li><a href="#">Игрушки радиоуправляемые прочие</a></li>
+                <li><a href="#">Транспорт водный радиоуправляемый</a></li>
+                <li><a href="#">Роботы радиоуправляемые</a></li>
+                <li><a href="#">Квадрокоптеры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Конструкторы</span>
+                <li><a href="#">Блочные</a></li>
+                <li><a href="#">Магнитные</a></li>
+                <li><a href="#">Лего</a></li>
+                <li><a href="#">Банчемсы</a></li>
+                <li><a href="#">Металлические</a></li>
+                <li><a href="#">Сборные игровые конструкторы</a></li>
+                <li><a href="#">Деревянные конструкторы</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Куклы и акссесуары</span>
+                <li><a href="#">Куклы классические</a></li>
+                <li><a href="#">Куклы мини</a></li>
+                <li><a href="#">Куклы модельные</a></li>
+                <li><a href="#">Одежда для кукол</a></li>
+                <li><a href="#">Коляски для кукол</a></li>
+                <li><a href="#">Мебель для кукол</a></li>
+                <li><a href="#">Кукольные дома</a></li>
+                <li><a href="#">Аксессуары для кукол</a></li>
+              </ul>
+            </div>
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Сюжетно ролевые игры и оружие</span>
+                <li><a href="#">Игрушечное оружие</a></li>
+                <li><a href="#">Игровая посуда,продукты, кухонная и бытовая техника</a></li>
+                <li><a href="#">Профессии и сюжетно-ролевые игры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Музыкальные инструменты</span></ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игровые наборы и фигурки</span>
+                <li><a href="#">Животные, птицы, рыбы и рептилии</a></li>
+                <li><a href="#">Солдатики и игровые военные наборы</a></li>
+                <li><a href="#">Фигуры (герои) из мультфильмов</a></li>
+                <li><a href="#">Роботы и трансформеры</a></li>
+                <li><a href="#">Фигурки и наборы для девочек</a></li>
+                <li><a href="#">Фигурки и наборы для мальчиков</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Электроника</span>
+                <li><a href="#">Телефоны, планшеты, ноутбуки, электронные плакаты</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Головоломки</span></ul>
+            </div>
+          </div>
+        </div>
+        <!--sublist для Книги-->
+        <div class="menu-dropdown__sublist js_menu_dropdown_sublist">
+          <div class="content-wrapper">
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Конструкторы</span>
+                <li><a href="#">Блочные</a></li>
+                <li><a href="#">Магнитные</a></li>
+                <li><a href="#">Лего</a></li>
+                <li><a href="#">Банчемсы</a></li>
+                <li><a href="#">Металлические</a></li>
+                <li><a href="#">Сборные игровые конструкторы</a></li>
+                <li><a href="#">Деревянные конструкторы</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Куклы и акссесуары</span>
+                <li><a href="#">Куклы классические</a></li>
+                <li><a href="#">Куклы мини</a></li>
+                <li><a href="#">Куклы модельные</a></li>
+                <li><a href="#">Одежда для кукол</a></li>
+                <li><a href="#">Коляски для кукол</a></li>
+                <li><a href="#">Мебель для кукол</a></li>
+                <li><a href="#">Кукольные дома</a></li>
+                <li><a href="#">Аксессуары для кукол</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Мягкие игрушки</span>
+                <li><a href="#">Медведи</a></li>
+                <li><a href="#">Зайцы</a></li>
+                <li><a href="#">Мягкие игрушки по размерам</a></li>
+                <li><a href="#">Мягкие интерактивные игрушки</a></li>
+                <li><a href="#">Символ года</a></li>
+                <li><a href="#">Качалки</a></li>
+                <li><a href="#">Герои</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игрушки для малышей</span>
+                <li><a href="#">Игрушечный транспорт</a></li>
+                <li><a href="#">Развивающие коврики</a></li>
+                <li><a href="#">Игрушки для для кроватки</a></li>
+                <li><a href="#">Погремушки</a></li>
+                <li><a href="#">Игрушки и каталки</a></li>
+                <li><a href="#">Развивающие интерактивные игрушки</a></li>
+                <li><a href="#">Сортеры, шнуровки, бизиборды                        </a></li>
+                <li><a href="#">Вертолеты, самолеты, катера, корабли космическая техника </a></li>
+                <li><a href="#">Гаражи, парковки, треки</a></li>
+                <li><a href="#">Коллекционные машинки</a></li>
+                <li><a href="#">Железная дорога</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Радиоуправляемые игрушки</span>
+                <li><a href="#">Транспорт воздушный радиоуправляемый</a></li>
+                <li><a href="#">Транспорт наземный радиоуправляемый</a></li>
+                <li><a href="#">Игрушки радиоуправляемые прочие</a></li>
+                <li><a href="#">Транспорт водный радиоуправляемый</a></li>
+                <li><a href="#">Роботы радиоуправляемые</a></li>
+                <li><a href="#">Квадрокоптеры</a></li>
+              </ul>
+            </div>
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Сюжетно ролевые игры и оружие</span>
+                <li><a href="#">Игрушечное оружие</a></li>
+                <li><a href="#">Игровая посуда,продукты, кухонная и бытовая техника</a></li>
+                <li><a href="#">Профессии и сюжетно-ролевые игры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Музыкальные инструменты</span></ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игровые наборы и фигурки</span>
+                <li><a href="#">Животные, птицы, рыбы и рептилии</a></li>
+                <li><a href="#">Солдатики и игровые военные наборы</a></li>
+                <li><a href="#">Фигуры (герои) из мультфильмов</a></li>
+                <li><a href="#">Роботы и трансформеры</a></li>
+                <li><a href="#">Фигурки и наборы для девочек</a></li>
+                <li><a href="#">Фигурки и наборы для мальчиков</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Электроника</span>
+                <li><a href="#">Телефоны, планшеты, ноутбуки, электронные плакаты</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Головоломки</span></ul>
+            </div>
+          </div>
+        </div>
+        <!--sublist для Игрушки и игры-->
+        <div class="menu-dropdown__sublist js_menu_dropdown_sublist">
+          <div class="content-wrapper"> 
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Сюжетно ролевые игры и оружие</span>
+                <li><a href="#">Игрушечное оружие</a></li>
+                <li><a href="#">Игровая посуда,продукты, кухонная и бытовая техника</a></li>
+                <li><a href="#">Профессии и сюжетно-ролевые игры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Музыкальные инструменты</span></ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игровые наборы и фигурки</span>
+                <li><a href="#">Животные, птицы, рыбы и рептилии</a></li>
+                <li><a href="#">Солдатики и игровые военные наборы</a></li>
+                <li><a href="#">Фигуры (герои) из мультфильмов</a></li>
+                <li><a href="#">Роботы и трансформеры</a></li>
+                <li><a href="#">Фигурки и наборы для девочек</a></li>
+                <li><a href="#">Фигурки и наборы для мальчиков</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Электроника</span>
+                <li><a href="#">Телефоны, планшеты, ноутбуки, электронные плакаты</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Головоломки</span></ul>
+            </div>
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Конструкторы</span>
+                <li><a href="#">Блочные</a></li>
+                <li><a href="#">Магнитные</a></li>
+                <li><a href="#">Лего</a></li>
+                <li><a href="#">Банчемсы</a></li>
+                <li><a href="#">Металлические</a></li>
+                <li><a href="#">Сборные игровые конструкторы</a></li>
+                <li><a href="#">Деревянные конструкторы</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Куклы и акссесуары</span>
+                <li><a href="#">Куклы классические</a></li>
+                <li><a href="#">Куклы мини</a></li>
+                <li><a href="#">Куклы модельные</a></li>
+                <li><a href="#">Одежда для кукол</a></li>
+                <li><a href="#">Коляски для кукол</a></li>
+                <li><a href="#">Мебель для кукол</a></li>
+                <li><a href="#">Кукольные дома</a></li>
+                <li><a href="#">Аксессуары для кукол</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Мягкие игрушки</span>
+                <li><a href="#">Медведи</a></li>
+                <li><a href="#">Зайцы</a></li>
+                <li><a href="#">Мягкие игрушки по размерам</a></li>
+                <li><a href="#">Мягкие интерактивные игрушки</a></li>
+                <li><a href="#">Символ года</a></li>
+                <li><a href="#">Качалки</a></li>
+                <li><a href="#">Герои</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игрушки для малышей</span>
+                <li><a href="#">Игрушечный транспорт</a></li>
+                <li><a href="#">Развивающие коврики</a></li>
+                <li><a href="#">Игрушки для для кроватки</a></li>
+                <li><a href="#">Погремушки</a></li>
+                <li><a href="#">Игрушки и каталки</a></li>
+                <li><a href="#">Развивающие интерактивные игрушки</a></li>
+                <li><a href="#">Сортеры, шнуровки, бизиборды                        </a></li>
+                <li><a href="#">Вертолеты, самолеты, катера, корабли космическая техника </a></li>
+                <li><a href="#">Гаражи, парковки, треки</a></li>
+                <li><a href="#">Коллекционные машинки</a></li>
+                <li><a href="#">Железная дорога</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Радиоуправляемые игрушки</span>
+                <li><a href="#">Транспорт воздушный радиоуправляемый</a></li>
+                <li><a href="#">Транспорт наземный радиоуправляемый</a></li>
+                <li><a href="#">Игрушки радиоуправляемые прочие</a></li>
+                <li><a href="#">Транспорт водный радиоуправляемый</a></li>
+                <li><a href="#">Роботы радиоуправляемые</a></li>
+                <li><a href="#">Квадрокоптеры</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!--sublist для Канц. товары-->
+        <div class="menu-dropdown__sublist js_menu_dropdown_sublist">
+          <div class="content-wrapper">
+            <div class="menu-dropdown__sublist-row">
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Мягкие игрушки</span>
+                <li><a href="#">Медведи</a></li>
+                <li><a href="#">Зайцы</a></li>
+                <li><a href="#">Мягкие игрушки по размерам</a></li>
+                <li><a href="#">Мягкие интерактивные игрушки</a></li>
+                <li><a href="#">Символ года</a></li>
+                <li><a href="#">Качалки</a></li>
+                <li><a href="#">Герои</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игрушки для малышей</span>
+                <li><a href="#">Игрушечный транспорт</a></li>
+                <li><a href="#">Развивающие коврики</a></li>
+                <li><a href="#">Игрушки для для кроватки</a></li>
+                <li><a href="#">Погремушки</a></li>
+                <li><a href="#">Игрушки и каталки</a></li>
+                <li><a href="#">Развивающие интерактивные игрушки</a></li>
+                <li><a href="#">Сортеры, шнуровки, бизиборды                        </a></li>
+                <li><a href="#">Вертолеты, самолеты, катера, корабли космическая техника </a></li>
+                <li><a href="#">Гаражи, парковки, треки</a></li>
+                <li><a href="#">Коллекционные машинки</a></li>
+                <li><a href="#">Железная дорога</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Радиоуправляемые игрушки</span>
+                <li><a href="#">Транспорт воздушный радиоуправляемый</a></li>
+                <li><a href="#">Транспорт наземный радиоуправляемый</a></li>
+                <li><a href="#">Игрушки радиоуправляемые прочие</a></li>
+                <li><a href="#">Транспорт водный радиоуправляемый</a></li>
+                <li><a href="#">Роботы радиоуправляемые</a></li>
+                <li><a href="#">Квадрокоптеры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Конструкторы</span>
+                <li><a href="#">Блочные</a></li>
+                <li><a href="#">Магнитные</a></li>
+                <li><a href="#">Лего</a></li>
+                <li><a href="#">Банчемсы</a></li>
+                <li><a href="#">Металлические</a></li>
+                <li><a href="#">Сборные игровые конструкторы</a></li>
+                <li><a href="#">Деревянные конструкторы</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Куклы и акссесуары</span>
+                <li><a href="#">Куклы классические</a></li>
+                <li><a href="#">Куклы мини</a></li>
+                <li><a href="#">Куклы модельные</a></li>
+                <li><a href="#">Одежда для кукол</a></li>
+                <li><a href="#">Коляски для кукол</a></li>
+                <li><a href="#">Мебель для кукол</a></li>
+                <li><a href="#">Кукольные дома</a></li>
+                <li><a href="#">Аксессуары для кукол</a></li>
+              </ul>
+            </div>
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Сюжетно ролевые игры и оружие</span>
+                <li><a href="#">Игрушечное оружие</a></li>
+                <li><a href="#">Игровая посуда,продукты, кухонная и бытовая техника</a></li>
+                <li><a href="#">Профессии и сюжетно-ролевые игры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Музыкальные инструменты</span></ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игровые наборы и фигурки</span>
+                <li><a href="#">Животные, птицы, рыбы и рептилии</a></li>
+                <li><a href="#">Солдатики и игровые военные наборы</a></li>
+                <li><a href="#">Фигуры (герои) из мультфильмов</a></li>
+                <li><a href="#">Роботы и трансформеры</a></li>
+                <li><a href="#">Фигурки и наборы для девочек</a></li>
+                <li><a href="#">Фигурки и наборы для мальчиков</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Электроника</span>
+                <li><a href="#">Телефоны, планшеты, ноутбуки, электронные плакаты</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Головоломки</span></ul>
+            </div>
+          </div>
+        </div>
+        <!--sublist для Новый год-->
+        <div class="menu-dropdown__sublist js_menu_dropdown_sublist">
+          <div class="content-wrapper">
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Конструкторы</span>
+                <li><a href="#">Блочные</a></li>
+                <li><a href="#">Магнитные</a></li>
+                <li><a href="#">Лего</a></li>
+                <li><a href="#">Банчемсы</a></li>
+                <li><a href="#">Металлические</a></li>
+                <li><a href="#">Сборные игровые конструкторы</a></li>
+                <li><a href="#">Деревянные конструкторы</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Куклы и акссесуары</span>
+                <li><a href="#">Куклы классические</a></li>
+                <li><a href="#">Куклы мини</a></li>
+                <li><a href="#">Куклы модельные</a></li>
+                <li><a href="#">Одежда для кукол</a></li>
+                <li><a href="#">Коляски для кукол</a></li>
+                <li><a href="#">Мебель для кукол</a></li>
+                <li><a href="#">Кукольные дома</a></li>
+                <li><a href="#">Аксессуары для кукол</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Мягкие игрушки</span>
+                <li><a href="#">Медведи</a></li>
+                <li><a href="#">Зайцы</a></li>
+                <li><a href="#">Мягкие игрушки по размерам</a></li>
+                <li><a href="#">Мягкие интерактивные игрушки</a></li>
+                <li><a href="#">Символ года</a></li>
+                <li><a href="#">Качалки</a></li>
+                <li><a href="#">Герои</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игрушки для малышей</span>
+                <li><a href="#">Игрушечный транспорт</a></li>
+                <li><a href="#">Развивающие коврики</a></li>
+                <li><a href="#">Игрушки для для кроватки</a></li>
+                <li><a href="#">Погремушки</a></li>
+                <li><a href="#">Игрушки и каталки</a></li>
+                <li><a href="#">Развивающие интерактивные игрушки</a></li>
+                <li><a href="#">Сортеры, шнуровки, бизиборды                        </a></li>
+                <li><a href="#">Вертолеты, самолеты, катера, корабли космическая техника </a></li>
+                <li><a href="#">Гаражи, парковки, треки</a></li>
+                <li><a href="#">Коллекционные машинки</a></li>
+                <li><a href="#">Железная дорога</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Радиоуправляемые игрушки</span>
+                <li><a href="#">Транспорт воздушный радиоуправляемый</a></li>
+                <li><a href="#">Транспорт наземный радиоуправляемый</a></li>
+                <li><a href="#">Игрушки радиоуправляемые прочие</a></li>
+                <li><a href="#">Транспорт водный радиоуправляемый</a></li>
+                <li><a href="#">Роботы радиоуправляемые</a></li>
+                <li><a href="#">Квадрокоптеры</a></li>
+              </ul>
+            </div>
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Сюжетно ролевые игры и оружие</span>
+                <li><a href="#">Игрушечное оружие</a></li>
+                <li><a href="#">Игровая посуда,продукты, кухонная и бытовая техника</a></li>
+                <li><a href="#">Профессии и сюжетно-ролевые игры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Музыкальные инструменты</span></ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игровые наборы и фигурки</span>
+                <li><a href="#">Животные, птицы, рыбы и рептилии</a></li>
+                <li><a href="#">Солдатики и игровые военные наборы</a></li>
+                <li><a href="#">Фигуры (герои) из мультфильмов</a></li>
+                <li><a href="#">Роботы и трансформеры</a></li>
+                <li><a href="#">Фигурки и наборы для девочек</a></li>
+                <li><a href="#">Фигурки и наборы для мальчиков</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Электроника</span>
+                <li><a href="#">Телефоны, планшеты, ноутбуки, электронные плакаты</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Головоломки</span></ul>
+            </div>
+          </div>
+        </div>
+        <!--sublist для Cпорт и отдых-->
+        <div class="menu-dropdown__sublist js_menu_dropdown_sublist">
+          <div class="content-wrapper"> 
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Сюжетно ролевые игры и оружие</span>
+                <li><a href="#">Игрушечное оружие</a></li>
+                <li><a href="#">Игровая посуда,продукты, кухонная и бытовая техника</a></li>
+                <li><a href="#">Профессии и сюжетно-ролевые игры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Музыкальные инструменты</span></ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игровые наборы и фигурки</span>
+                <li><a href="#">Животные, птицы, рыбы и рептилии</a></li>
+                <li><a href="#">Солдатики и игровые военные наборы</a></li>
+                <li><a href="#">Фигуры (герои) из мультфильмов</a></li>
+                <li><a href="#">Роботы и трансформеры</a></li>
+                <li><a href="#">Фигурки и наборы для девочек</a></li>
+                <li><a href="#">Фигурки и наборы для мальчиков</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Электроника</span>
+                <li><a href="#">Телефоны, планшеты, ноутбуки, электронные плакаты</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Головоломки</span></ul>
+            </div>
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Конструкторы</span>
+                <li><a href="#">Блочные</a></li>
+                <li><a href="#">Магнитные</a></li>
+                <li><a href="#">Лего</a></li>
+                <li><a href="#">Банчемсы</a></li>
+                <li><a href="#">Металлические</a></li>
+                <li><a href="#">Сборные игровые конструкторы</a></li>
+                <li><a href="#">Деревянные конструкторы</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Куклы и акссесуары</span>
+                <li><a href="#">Куклы классические</a></li>
+                <li><a href="#">Куклы мини</a></li>
+                <li><a href="#">Куклы модельные</a></li>
+                <li><a href="#">Одежда для кукол</a></li>
+                <li><a href="#">Коляски для кукол</a></li>
+                <li><a href="#">Мебель для кукол</a></li>
+                <li><a href="#">Кукольные дома</a></li>
+                <li><a href="#">Аксессуары для кукол</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Мягкие игрушки</span>
+                <li><a href="#">Медведи</a></li>
+                <li><a href="#">Зайцы</a></li>
+                <li><a href="#">Мягкие игрушки по размерам</a></li>
+                <li><a href="#">Мягкие интерактивные игрушки</a></li>
+                <li><a href="#">Символ года</a></li>
+                <li><a href="#">Качалки</a></li>
+                <li><a href="#">Герои</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игрушки для малышей</span>
+                <li><a href="#">Игрушечный транспорт</a></li>
+                <li><a href="#">Развивающие коврики</a></li>
+                <li><a href="#">Игрушки для для кроватки</a></li>
+                <li><a href="#">Погремушки</a></li>
+                <li><a href="#">Игрушки и каталки</a></li>
+                <li><a href="#">Развивающие интерактивные игрушки</a></li>
+                <li><a href="#">Сортеры, шнуровки, бизиборды                        </a></li>
+                <li><a href="#">Вертолеты, самолеты, катера, корабли космическая техника </a></li>
+                <li><a href="#">Гаражи, парковки, треки</a></li>
+                <li><a href="#">Коллекционные машинки</a></li>
+                <li><a href="#">Железная дорога</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Радиоуправляемые игрушки</span>
+                <li><a href="#">Транспорт воздушный радиоуправляемый</a></li>
+                <li><a href="#">Транспорт наземный радиоуправляемый</a></li>
+                <li><a href="#">Игрушки радиоуправляемые прочие</a></li>
+                <li><a href="#">Транспорт водный радиоуправляемый</a></li>
+                <li><a href="#">Роботы радиоуправляемые</a></li>
+                <li><a href="#">Квадрокоптеры</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!--sublist для Прочее-->
+        <div class="menu-dropdown__sublist js_menu_dropdown_sublist">
+          <div class="content-wrapper">
+            <div class="menu-dropdown__sublist-row">
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Мягкие игрушки</span>
+                <li><a href="#">Медведи</a></li>
+                <li><a href="#">Зайцы</a></li>
+                <li><a href="#">Мягкие игрушки по размерам</a></li>
+                <li><a href="#">Мягкие интерактивные игрушки</a></li>
+                <li><a href="#">Символ года</a></li>
+                <li><a href="#">Качалки</a></li>
+                <li><a href="#">Герои</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игрушки для малышей</span>
+                <li><a href="#">Игрушечный транспорт</a></li>
+                <li><a href="#">Развивающие коврики</a></li>
+                <li><a href="#">Игрушки для для кроватки</a></li>
+                <li><a href="#">Погремушки</a></li>
+                <li><a href="#">Игрушки и каталки</a></li>
+                <li><a href="#">Развивающие интерактивные игрушки</a></li>
+                <li><a href="#">Сортеры, шнуровки, бизиборды                        </a></li>
+                <li><a href="#">Вертолеты, самолеты, катера, корабли космическая техника </a></li>
+                <li><a href="#">Гаражи, парковки, треки</a></li>
+                <li><a href="#">Коллекционные машинки</a></li>
+                <li><a href="#">Железная дорога</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Радиоуправляемые игрушки</span>
+                <li><a href="#">Транспорт воздушный радиоуправляемый</a></li>
+                <li><a href="#">Транспорт наземный радиоуправляемый</a></li>
+                <li><a href="#">Игрушки радиоуправляемые прочие</a></li>
+                <li><a href="#">Транспорт водный радиоуправляемый</a></li>
+                <li><a href="#">Роботы радиоуправляемые</a></li>
+                <li><a href="#">Квадрокоптеры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Конструкторы</span>
+                <li><a href="#">Блочные</a></li>
+                <li><a href="#">Магнитные</a></li>
+                <li><a href="#">Лего</a></li>
+                <li><a href="#">Банчемсы</a></li>
+                <li><a href="#">Металлические</a></li>
+                <li><a href="#">Сборные игровые конструкторы</a></li>
+                <li><a href="#">Деревянные конструкторы</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Куклы и акссесуары</span>
+                <li><a href="#">Куклы классические</a></li>
+                <li><a href="#">Куклы мини</a></li>
+                <li><a href="#">Куклы модельные</a></li>
+                <li><a href="#">Одежда для кукол</a></li>
+                <li><a href="#">Коляски для кукол</a></li>
+                <li><a href="#">Мебель для кукол</a></li>
+                <li><a href="#">Кукольные дома</a></li>
+                <li><a href="#">Аксессуары для кукол</a></li>
+              </ul>
+            </div>
+            <div class="menu-dropdown__sublist-row"> 
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Сюжетно ролевые игры и оружие</span>
+                <li><a href="#">Игрушечное оружие</a></li>
+                <li><a href="#">Игровая посуда,продукты, кухонная и бытовая техника</a></li>
+                <li><a href="#">Профессии и сюжетно-ролевые игры</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Музыкальные инструменты</span></ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Игровые наборы и фигурки</span>
+                <li><a href="#">Животные, птицы, рыбы и рептилии</a></li>
+                <li><a href="#">Солдатики и игровые военные наборы</a></li>
+                <li><a href="#">Фигуры (герои) из мультфильмов</a></li>
+                <li><a href="#">Роботы и трансформеры</a></li>
+                <li><a href="#">Фигурки и наборы для девочек</a></li>
+                <li><a href="#">Фигурки и наборы для мальчиков</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Электроника</span>
+                <li><a href="#">Телефоны, планшеты, ноутбуки, электронные плакаты</a></li>
+              </ul>
+              <ul class="menu-dropdown__sublist-list"><span class="menu-dropdown__sublist-list-title">Головоломки</span></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- выпадающее меню для мобильных устр-тв-->
+      <div class="menu-dropdown-mobile js_menu_dropdown_mobile">
+        <div class="content-wrapper">
+          <ul class="menu-dropdown-mobile__list">
+            <li class="menu-dropdown-mobile__list-item"><a href="#">Скидки %</a></li>
+            <li class="menu-dropdown-mobile__list-item"><a href="#">Сезонные товары</a></li>
+            <li class="menu-dropdown-mobile__list-item"><a href="#">Игрушки -30%</a></li>
+            <li class="menu-dropdown-mobile__list-item"><a href="#">Бренды</a></li>
+            <li class="menu-dropdown-mobile__list-item"><a href="#">Новый год</a></li>
+            <li class="menu-dropdown-mobile__list-item"><a href="#">Магазины</a></li>
+            <li class="menu-dropdown-mobile__list-item"><a href="#">Промо-каталог</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- хлебные крошки-->
+    <div class="breadcrumbs"> 
+      <div class="content-wrapper">
+        <ol class="breadcrumbs-list">
+          <li> <a href="page-main.html">TIKI TOMI</a></li>
+          <li> 
+            <svg width="8" height="8" viewbox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.710938 6.31348L6.06348 4.08496L0.710938 1.53516V0.516602L7.28027 3.79102V4.46094L0.710938 7.3457V6.31348Z" fill="#4F4F4F">                      </path>
+            </svg>
+          </li>
+          <li> <a href="#">Личный кабинет</a></li>
+          <li> 
+            <svg width="8" height="8" viewbox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.710938 6.31348L6.06348 4.08496L0.710938 1.53516V0.516602L7.28027 3.79102V4.46094L0.710938 7.3457V6.31348Z" fill="#4F4F4F">                      </path>
+            </svg>
+          </li>
+          <li> <a class="js_breadcrumbs_name_page" href="#">Личные данные</a></li>
+        </ol>
+      </div>
+    </div>
+    <!-- ОСНОВНОЙ КОНТЕНТ-->
+    <main class="cabinet">
+      <div class="content-wrapper">
+        <h1>Личный кабинет </h1>
+        <ul class="cabinet__section">
+          <li class="js_cabinet_section_item">Личные данные</li>
+          <li class="js_cabinet_section_item">Мои бонусы</li>
+          <li class="js_cabinet_section_item active">Мои заказы</li>
+          <li class="js_cabinet_section_item">Мои дети</li>
+          <li class="js_cabinet_section_item">Адреса доставки</li>
+          <li class="js_cabinet_section_item">Избранное</li>
+        </ul>
+        <div class="cabinet-content">
+          <!-- блок ЛИЧНЫЕ ДАННЫЕ-->
+          <section class="cabinet-personal js_cabinet_personal js_cabinet_content_block">
+            <div class="cabinet-personal__data">
+              <h2>Личные данные</h2><span>*Заполните обязательные поля, чтобы активировать бонусы</span>
+              <form class="cabinet-personal__data-form js_cabinet_personal_data_form">
+                <input class="js_cabinet_personal_data_form_input" type="text" name="name" placeholder="Имя*" minlength="2" required>
+                <input class="js_cabinet_personal_data_form_input" type="tel" name="phone" placeholder="Телефон*" required>
+                <input class="js_cabinet_personal_data_form_input" type="email" name="email" placeholder="E-mail*" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                <input class="js_cabinet_personal_data_form_input" type="datetime" name="birth" placeholder="День рождения">
+                <div class="cabinet-personal__data-form-gender">
+                  <label class="cabinet-personal__data-form-gender-item js_cabinet_personal_data_form_gender_item default"><span>Мужчина</span></label>
+                  <label class="cabinet-personal__data-form-gender-item js_cabinet_personal_data_form_gender_item default"><span>Женщина</span></label>
+                </div>
+                <button class="cabinet-personal__data-form-button">Сохранить изменения</button>
+              </form>
+            </div>
+            <div class="cabinet-personal__mailing">
+              <h2>Управление рассылками</h2>
+              <div class="cabinet-personal__mailing-checkbox">
+                <input type="checkbox" name="mailing-email" id="mailing-email" checked>
+                <label for="mailing-email"> <span>Рассылка по e-mail: новинки, распродажи, секретные промокоды</span><span>Присылаем не более 1 раза в неделю</span></label>
+                <input type="checkbox" name="mailing-email" id="mailing-sms" checked>
+                <label for="mailing-sms"> <span>Рассылка по SMS: бонусы, акции и спец.предложения</span><span>Никакой рекламы, только информация о заказе</span></label>
+                <input type="checkbox" name="mailing-email" id="notification-sms" checked>
+                <label for="notification-sms"> <span>Оповещать о готовности заказа по SMS</span><span>Никакой рекламы, только информация о заказе</span></label>
+              </div>
+              <h2>Установить постоянный пароль</h2>
+              <div class="cabinet-personal__mailing-password">
+                <input class="js_cabinet_personal_mailing_password_input" type="text" name="" placeholder="Пароль*">
+                <input class="js_cabinet_personal_mailing_password_input" type="text" name="" placeholder="Повторите пароль*">
+              </div>
+            </div>
+          </section>
+          <!-- блок МОИ БОНУСЫ-->
+          <section class="cabinet-bonuses js_cabinet_bonuses js_cabinet_content_block">
+            <div class="cabinet-bonuses__title">
+              <h2>Бонусный счет</h2>
+              <div class="cabinet-bonuses__title-link"><a href="#">Вопросы и ответы</a><a href="#">Условия бонусной программы</a></div>
+            </div>
+            <div class="cabinet-bonuses__card"> 
+              <div class="cabinet-bonuses__card-info">
+                <div class="cabinet-bonuses__card-info-wrap">
+                  <p>Ваша бонусная карта <span>№ 2222 2462 2956 8029</span></p>
+                  <p class="cabinet-bonuses__card-info-active">Активные бонусы: <span>350₽</span></p>
+                  <p class="cabinet-bonuses__card-info-text">Вы можете потратить бонусы на покупки. <span>1 бонус = 1 рубль</span></p>
+                  <p>
+                     Неактивные бонусы: 115 ₽</p>
+                  <p>
+                     Внимание! Зачисление бонусов занимает <span>до 14 календарных дней </span></p>
+                </div>
+                <div class="cabinet-bonuses__card-info-buttons">
+                  <button class="js_open_popup_add_card">+ Добавить карту</button>
+                  <button>Удалить карту</button>
+                </div>
+              </div>
+              <div class="cabinet-bonuses__card-img"><img src="img/cabinet-bonus-card-img.svg" alt="картинка карты"></div>
+            </div>
+            <div class="cabinet-bonuses__history">
+              <h2>История зачисления и списания бонусов</h2>
+              <div class="cabinet-bonuses__history-wrap">
+                <div class="cabinet-bonuses__history-item"><span>+ 244₽</span><span>
+                     Начислено за заказ: 
+                    <mark>5726482949</mark></span><span>
+                     Дата: 
+                    <mark>28.02.2021</mark></span><span>
+                     Сумма заказа: 
+                    <mark>5 600 ₽</mark></span><a href="#">Посмотреть заказ</a></div>
+                <div class="cabinet-bonuses__history-item delete"><span>- 1666₽</span><span>
+                     Списано за заказ:
+                    <mark>8726787090</mark></span><span>
+                     Дата: 
+                    <mark>25.02.2021</mark></span><span>
+                     Сумма заказа: 
+                    <mark>14 611 ₽</mark></span><a href="#">Посмотреть заказ</a></div>
+                <div class="cabinet-bonuses__history-item"><span>+ 1000₽</span><span>
+                     Начислено за заказ: 
+                    <mark>1236454877</mark></span><span>
+                     Дата: 
+                    <mark>01.01.2021</mark></span><span>
+                     Сумма заказа: 
+                    <mark>4 100 ₽</mark></span><a href="#">Посмотреть заказ</a></div>
+                <div class="cabinet-bonuses__history-item"><span>+ 244₽</span><span>
+                     Начислено за заказ: 
+                    <mark>5726482949</mark></span><span>
+                     Дата: 
+                    <mark>28.02.2021</mark></span><span>
+                     Сумма заказа: 
+                    <mark>5 600 ₽</mark></span><a href="#">Посмотреть заказ</a></div>
+                <div class="cabinet-bonuses__history-item delete"><span>- 1666₽</span><span>
+                     Списано за заказ:
+                    <mark>8726787090</mark></span><span>
+                     Дата: 
+                    <mark>25.02.2021</mark></span><span>
+                     Сумма заказа: 
+                    <mark>14 611 ₽</mark></span><a href="#">Посмотреть заказ</a></div>
+                <div class="cabinet-bonuses__history-item"><span>+ 1000₽</span><span>
+                     Начислено за заказ: 
+                    <mark>1236454877</mark></span><span>
+                     Дата: 
+                    <mark>01.01.2021</mark></span><span>
+                     Сумма заказа: 
+                    <mark>4 100 ₽</mark></span><a href="#">Посмотреть заказ</a></div>
+                <div class="cabinet-bonuses__history-item delete"><span>- 1666₽</span><span>
+                     Списано за заказ:
+                    <mark>8726787090</mark></span><span>
+                     Дата: 
+                    <mark>25.02.2021</mark></span><span>
+                     Сумма заказа: 
+                    <mark>14 611 ₽</mark></span><a href="#">Посмотреть заказ</a></div>
+                <div class="cabinet-bonuses__history-item"><span>+ 1000₽</span><span>
+                     Начислено за заказ: 
+                    <mark>1236454877</mark></span><span>
+                     Дата: 
+                    <mark>01.01.2021</mark></span><span>
+                     Сумма заказа: 
+                    <mark>4 100 ₽</mark></span><a href="#">Посмотреть заказ</a></div>
+              </div>
+              <button class="cabinet-bonuses__history-see">
+                 Показать <span>(1399)</span></button>
+            </div>
+          </section>
+          <!-- блок МОИ ЗАКАЗЫ - нет заказов-->
+          <section class="cabinet-order js_cabinet_order js_cabinet_content_block active">
+            <div class="cabinet-order__not-order">
+              <div class="cabinet-order__not-order-content"><span>У вас еще нет заказов</span><a href="#">Перейти в каталог</a></div>
+              <svg class="cabinet-order__not-order-content-img" width="336" height="480" viewbox="0 0 336 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M336 168.136C336.006 135.383 326.45 103.342 308.506 75.9495C290.563 48.557 265.012 27.0062 234.995 13.945C204.978 0.883906 171.802 -3.1186 139.543 2.4293C107.283 7.97721 77.3465 22.8339 53.4102 45.1738C29.4739 67.5138 12.5809 96.3638 4.80694 128.179C-2.96699 159.995 -1.2833 193.39 9.65119 224.261C20.5857 255.132 40.2946 282.134 66.3564 301.95C92.4181 321.766 123.697 333.532 156.351 335.803C153.736 336.913 152.111 338.38 152.111 340.006C152.111 342.424 155.717 344.526 160.947 345.557L153.023 358.957C152.928 359.103 152.876 359.272 152.871 359.446C152.866 359.62 152.909 359.792 152.995 359.943C153.08 360.094 153.206 360.219 153.357 360.304C153.509 360.389 153.681 360.43 153.855 360.424H166.772L166.177 480H169.585L170.179 360.384H182.502C182.676 360.391 182.848 360.349 182.999 360.264C183.151 360.179 183.276 360.055 183.362 359.903C183.448 359.752 183.491 359.58 183.486 359.407C183.481 359.233 183.428 359.064 183.334 358.918L175.409 345.517C180.64 344.486 184.245 342.385 184.245 339.966C184.245 338.341 182.621 336.874 180.006 335.764C222.367 332.727 262.007 313.749 290.95 282.648C319.892 251.547 335.988 210.632 336 168.136Z" fill="#E9477A"></path>
+                <path d="M168.672 197.488H106.352C103.728 197.488 101.487 196.559 99.628 194.7C97.7693 192.841 96.84 190.6 96.84 187.976C96.84 185.461 97.7693 183.275 99.628 181.416C101.487 179.448 103.728 178.464 106.352 178.464H168.672C171.187 178.464 173.373 179.448 175.232 181.416C177.091 183.275 178.02 185.461 178.02 187.976C178.02 190.6 177.091 192.841 175.232 194.7C173.373 196.559 171.187 197.488 168.672 197.488ZM168.672 163.376H106.352C103.728 163.376 101.487 162.447 99.628 160.588C97.7693 158.729 96.84 156.488 96.84 153.864C96.84 151.349 97.7693 149.163 99.628 147.304C101.487 145.336 103.728 144.352 106.352 144.352H168.672C171.187 144.352 173.373 145.336 175.232 147.304C177.091 149.163 178.02 151.349 178.02 153.864C178.02 156.488 177.091 158.729 175.232 160.588C173.373 162.447 171.187 163.376 168.672 163.376ZM239.886 226.516C239.886 229.359 238.848 231.819 236.77 233.896C234.693 236.083 232.178 237.176 229.226 237.176C225.072 237.176 221.956 235.427 219.878 231.928C207.305 211.811 201.018 189.233 201.018 164.196C201.018 139.487 207.305 116.964 219.878 96.628C221.956 93.1293 225.072 91.38 229.226 91.38C232.069 91.38 234.529 92.4733 236.606 94.66C238.793 96.7373 239.886 99.252 239.886 102.204C239.886 104.063 239.449 105.812 238.574 107.452C227.86 125.164 222.502 144.079 222.502 164.196C222.502 184.641 227.75 203.447 238.246 220.612C239.34 222.58 239.886 224.548 239.886 226.516Z" fill="white"></path>
+              </svg>
+            </div>
+            <section class="basket-slider">
+              <h2>Вы смотрели</h2>
+              <div class="basket-slider__slider swiper-container slider-default"> 
+                <div class="swiper-wrapper"> 
+                  <div class="swiper-slide">
+                        <!-- карточка товара(чтобы показать что товара нет в наличии, то надо добавить класс .no-availability)-->
+                        <article class="card-product">
+                          <div class="card-product__info">
+                            <div class="card-product__info-procent">-12%</div>
+                            <div class="card-product__info-wrap">
+                              <div class="card-product__info-new">Новинка</div>
+                                  <svg class="card-product__info-heart js_card_product_info_heart" width="28" height="25" viewbox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.6364 4.23829L13.9979 4.61672L14.3594 4.23829C15.5566 2.98516 17.6338 1.28644 19.993 1.28644C22.0953 1.28644 23.8505 2.01729 25.0788 3.24353C26.3071 4.4697 27.0388 6.22128 27.0388 8.31875C27.0388 10.6168 26.1366 12.5211 24.755 14.2431C23.3638 15.977 21.5115 17.497 19.6392 19.0311C17.8858 20.4671 16.028 21.9887 14.5938 23.6839C14.4539 23.849 14.2493 23.9443 14.0348 23.9443H13.9635C13.7494 23.9443 13.5442 23.8496 13.4036 23.6844C11.9838 22.0032 10.1436 20.4938 8.40511 19.0678L8.36056 19.0312L8.36036 19.0311C6.48748 17.4964 4.63544 15.9762 3.24473 14.2422C1.86361 12.5202 0.961914 10.6162 0.961914 8.31875C0.961914 6.22128 1.69362 4.46972 2.92206 3.24355C4.15057 2.01732 5.90602 1.28644 8.00899 1.28644C10.3667 1.28644 12.4388 2.98475 13.6364 4.23829Z"></path>
+                                  </svg>
+                            </div>
+                          </div>
+                          <div class="card-product__images"><a href="#"><img src="img/card-product-img1.png" alt="фото товара"></a></div>
+                          <div class="card-product__descr"><a class="card-product__descr-title" href="#">Коляска прогулочная Babyton Active Red E52 Коляска прогулочная  E52 Коляска прогулочная E52 Коляска прогулочная оляска прогулочная оляска прогулочнаяоляска прогулочная</a>
+                                <div class="card-product__descr-rating">
+                                  <div class="card-product__descr-rating-stars">
+                                    <div class="card-product__descr-rating-stars-bg-gray"></div>
+                                    <div class="card-product__descr-rating-stars-bg-yellow" style="width: 92%"></div>
+                                    <div class="card-product__descr-rating-stars-bg-stars"></div>
+                                  </div>
+                                  <div class="card-product__descr-rating-quantity"><span>21</span></div>
+                                </div>
+                            <div class="card-product__descr-price"><span>15 888</span><span>19 859</span></div>
+                                <div class="card-product__descr-bonus"><span>+299 Бонусов</span>
+                                  <div class="card-product__descr-bonus-wrap js_card_product_descr_bonus">
+                                    <svg class="js_bonus_quantity" width="19" height="19" viewbox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M9.5 0.3125C4.42637 0.3125 0.3125 4.42637 0.3125 9.5C0.3125 14.5736 4.42637 18.6875 9.5 18.6875C14.5736 18.6875 18.6875 14.5736 18.6875 9.5C18.6875 4.42637 14.5736 0.3125 9.5 0.3125ZM9.5 14.832C9.04678 14.832 8.67969 14.4649 8.67969 14.0117C8.67969 13.5585 9.04678 13.1914 9.5 13.1914C9.95322 13.1914 10.3203 13.5585 10.3203 14.0117C10.3203 14.4649 9.95322 14.832 9.5 14.832ZM10.7899 10.3306C10.6042 10.4023 10.4444 10.5283 10.3314 10.6922C10.2183 10.8561 10.1573 11.0502 10.1562 11.2493V11.7148C10.1562 11.8051 10.0824 11.8789 9.99219 11.8789H9.00781C8.91758 11.8789 8.84375 11.8051 8.84375 11.7148V11.2739C8.84375 10.8002 8.98115 10.3326 9.25185 9.94297C9.51641 9.56152 9.88555 9.27031 10.3203 9.1042C11.0176 8.83555 11.4688 8.25107 11.4688 7.61328C11.4688 6.70889 10.5849 5.97266 9.5 5.97266C8.41514 5.97266 7.53125 6.70889 7.53125 7.61328V7.76914C7.53125 7.85938 7.45742 7.9332 7.36719 7.9332H6.38281C6.29258 7.9332 6.21875 7.85938 6.21875 7.76914V7.61328C6.21875 6.80732 6.57148 6.05469 7.21133 5.49482C7.82656 4.95547 8.63867 4.66016 9.5 4.66016C10.3613 4.66016 11.1734 4.95752 11.7887 5.49482C12.4285 6.05469 12.7812 6.80732 12.7812 7.61328C12.7812 8.79863 11.9999 9.86504 10.7899 10.3306Z" fill="#489ED7"></path>
+                                    </svg>
+                                    <div class="card-product__descr-bonus-popup"><a href="#">Подробнее </a></div>
+                                  </div>
+                                </div>
+                          </div>
+                          <div class="card-product__favorites"></div>
+                        </article>
+                  </div>
+                  <div class="swiper-slide">
+                        <!-- карточка товара(чтобы показать что товара нет в наличии, то надо добавить класс .no-availability)-->
+                        <article class="card-product">
+                          <div class="card-product__info">
+                            <div class="card-product__info-procent">-12%</div>
+                            <div class="card-product__info-wrap">
+                              <div class="card-product__info-new">Новинка</div>
+                                  <svg class="card-product__info-heart js_card_product_info_heart" width="28" height="25" viewbox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.6364 4.23829L13.9979 4.61672L14.3594 4.23829C15.5566 2.98516 17.6338 1.28644 19.993 1.28644C22.0953 1.28644 23.8505 2.01729 25.0788 3.24353C26.3071 4.4697 27.0388 6.22128 27.0388 8.31875C27.0388 10.6168 26.1366 12.5211 24.755 14.2431C23.3638 15.977 21.5115 17.497 19.6392 19.0311C17.8858 20.4671 16.028 21.9887 14.5938 23.6839C14.4539 23.849 14.2493 23.9443 14.0348 23.9443H13.9635C13.7494 23.9443 13.5442 23.8496 13.4036 23.6844C11.9838 22.0032 10.1436 20.4938 8.40511 19.0678L8.36056 19.0312L8.36036 19.0311C6.48748 17.4964 4.63544 15.9762 3.24473 14.2422C1.86361 12.5202 0.961914 10.6162 0.961914 8.31875C0.961914 6.22128 1.69362 4.46972 2.92206 3.24355C4.15057 2.01732 5.90602 1.28644 8.00899 1.28644C10.3667 1.28644 12.4388 2.98475 13.6364 4.23829Z"></path>
+                                  </svg>
+                            </div>
+                          </div>
+                          <div class="card-product__images"><a href="#"><img src="img/card-product-img2.png" alt="фото товара"></a></div>
+                          <div class="card-product__descr"><a class="card-product__descr-title" href="#">Коляска прогулочная Babyton Active Red E52 Коляска прогулочная  E52 Коляска прогулочная E52 Коляска прогулочная оляска прогулочная оляска прогулочнаяоляска прогулочная</a>
+                                <div class="card-product__descr-rating">
+                                  <div class="card-product__descr-rating-stars">
+                                    <div class="card-product__descr-rating-stars-bg-gray"></div>
+                                    <div class="card-product__descr-rating-stars-bg-yellow" style="width: 92%"></div>
+                                    <div class="card-product__descr-rating-stars-bg-stars"></div>
+                                  </div>
+                                  <div class="card-product__descr-rating-quantity"><span>21</span></div>
+                                </div>
+                            <div class="card-product__descr-price"><span>15 888</span><span>19 859</span></div>
+                                <div class="card-product__descr-bonus"><span>+299 Бонусов</span>
+                                  <div class="card-product__descr-bonus-wrap js_card_product_descr_bonus">
+                                    <svg class="js_bonus_quantity" width="19" height="19" viewbox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M9.5 0.3125C4.42637 0.3125 0.3125 4.42637 0.3125 9.5C0.3125 14.5736 4.42637 18.6875 9.5 18.6875C14.5736 18.6875 18.6875 14.5736 18.6875 9.5C18.6875 4.42637 14.5736 0.3125 9.5 0.3125ZM9.5 14.832C9.04678 14.832 8.67969 14.4649 8.67969 14.0117C8.67969 13.5585 9.04678 13.1914 9.5 13.1914C9.95322 13.1914 10.3203 13.5585 10.3203 14.0117C10.3203 14.4649 9.95322 14.832 9.5 14.832ZM10.7899 10.3306C10.6042 10.4023 10.4444 10.5283 10.3314 10.6922C10.2183 10.8561 10.1573 11.0502 10.1562 11.2493V11.7148C10.1562 11.8051 10.0824 11.8789 9.99219 11.8789H9.00781C8.91758 11.8789 8.84375 11.8051 8.84375 11.7148V11.2739C8.84375 10.8002 8.98115 10.3326 9.25185 9.94297C9.51641 9.56152 9.88555 9.27031 10.3203 9.1042C11.0176 8.83555 11.4688 8.25107 11.4688 7.61328C11.4688 6.70889 10.5849 5.97266 9.5 5.97266C8.41514 5.97266 7.53125 6.70889 7.53125 7.61328V7.76914C7.53125 7.85938 7.45742 7.9332 7.36719 7.9332H6.38281C6.29258 7.9332 6.21875 7.85938 6.21875 7.76914V7.61328C6.21875 6.80732 6.57148 6.05469 7.21133 5.49482C7.82656 4.95547 8.63867 4.66016 9.5 4.66016C10.3613 4.66016 11.1734 4.95752 11.7887 5.49482C12.4285 6.05469 12.7812 6.80732 12.7812 7.61328C12.7812 8.79863 11.9999 9.86504 10.7899 10.3306Z" fill="#489ED7"></path>
+                                    </svg>
+                                    <div class="card-product__descr-bonus-popup"><a href="#">Подробнее </a></div>
+                                  </div>
+                                </div>
+                          </div>
+                          <div class="card-product__favorites"></div>
+                        </article>
+                  </div>
+                  <div class="swiper-slide">
+                        <!-- карточка товара(чтобы показать что товара нет в наличии, то надо добавить класс .no-availability)-->
+                        <article class="card-product">
+                          <div class="card-product__info">
+                            <div class="card-product__info-procent">-12%</div>
+                            <div class="card-product__info-wrap">
+                              <div class="card-product__info-new">Новинка</div>
+                                  <svg class="card-product__info-heart js_card_product_info_heart" width="28" height="25" viewbox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.6364 4.23829L13.9979 4.61672L14.3594 4.23829C15.5566 2.98516 17.6338 1.28644 19.993 1.28644C22.0953 1.28644 23.8505 2.01729 25.0788 3.24353C26.3071 4.4697 27.0388 6.22128 27.0388 8.31875C27.0388 10.6168 26.1366 12.5211 24.755 14.2431C23.3638 15.977 21.5115 17.497 19.6392 19.0311C17.8858 20.4671 16.028 21.9887 14.5938 23.6839C14.4539 23.849 14.2493 23.9443 14.0348 23.9443H13.9635C13.7494 23.9443 13.5442 23.8496 13.4036 23.6844C11.9838 22.0032 10.1436 20.4938 8.40511 19.0678L8.36056 19.0312L8.36036 19.0311C6.48748 17.4964 4.63544 15.9762 3.24473 14.2422C1.86361 12.5202 0.961914 10.6162 0.961914 8.31875C0.961914 6.22128 1.69362 4.46972 2.92206 3.24355C4.15057 2.01732 5.90602 1.28644 8.00899 1.28644C10.3667 1.28644 12.4388 2.98475 13.6364 4.23829Z"></path>
+                                  </svg>
+                            </div>
+                          </div>
+                          <div class="card-product__images"><a href="#"><img src="img/card-product-img3.png" alt="фото товара"></a></div>
+                          <div class="card-product__descr"><a class="card-product__descr-title" href="#">Коляска прогулочная Babyton Active Red E52 Коляска прогулочная  E52 Коляска прогулочная E52 Коляска прогулочная оляска прогулочная оляска прогулочнаяоляска прогулочная</a>
+                                <div class="card-product__descr-rating">
+                                  <div class="card-product__descr-rating-stars">
+                                    <div class="card-product__descr-rating-stars-bg-gray"></div>
+                                    <div class="card-product__descr-rating-stars-bg-yellow" style="width: 92%"></div>
+                                    <div class="card-product__descr-rating-stars-bg-stars"></div>
+                                  </div>
+                                  <div class="card-product__descr-rating-quantity"><span>21</span></div>
+                                </div>
+                            <div class="card-product__descr-price"><span>15 888</span><span>19 859</span></div>
+                                <div class="card-product__descr-bonus"><span>+299 Бонусов</span>
+                                  <div class="card-product__descr-bonus-wrap js_card_product_descr_bonus">
+                                    <svg class="js_bonus_quantity" width="19" height="19" viewbox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M9.5 0.3125C4.42637 0.3125 0.3125 4.42637 0.3125 9.5C0.3125 14.5736 4.42637 18.6875 9.5 18.6875C14.5736 18.6875 18.6875 14.5736 18.6875 9.5C18.6875 4.42637 14.5736 0.3125 9.5 0.3125ZM9.5 14.832C9.04678 14.832 8.67969 14.4649 8.67969 14.0117C8.67969 13.5585 9.04678 13.1914 9.5 13.1914C9.95322 13.1914 10.3203 13.5585 10.3203 14.0117C10.3203 14.4649 9.95322 14.832 9.5 14.832ZM10.7899 10.3306C10.6042 10.4023 10.4444 10.5283 10.3314 10.6922C10.2183 10.8561 10.1573 11.0502 10.1562 11.2493V11.7148C10.1562 11.8051 10.0824 11.8789 9.99219 11.8789H9.00781C8.91758 11.8789 8.84375 11.8051 8.84375 11.7148V11.2739C8.84375 10.8002 8.98115 10.3326 9.25185 9.94297C9.51641 9.56152 9.88555 9.27031 10.3203 9.1042C11.0176 8.83555 11.4688 8.25107 11.4688 7.61328C11.4688 6.70889 10.5849 5.97266 9.5 5.97266C8.41514 5.97266 7.53125 6.70889 7.53125 7.61328V7.76914C7.53125 7.85938 7.45742 7.9332 7.36719 7.9332H6.38281C6.29258 7.9332 6.21875 7.85938 6.21875 7.76914V7.61328C6.21875 6.80732 6.57148 6.05469 7.21133 5.49482C7.82656 4.95547 8.63867 4.66016 9.5 4.66016C10.3613 4.66016 11.1734 4.95752 11.7887 5.49482C12.4285 6.05469 12.7812 6.80732 12.7812 7.61328C12.7812 8.79863 11.9999 9.86504 10.7899 10.3306Z" fill="#489ED7"></path>
+                                    </svg>
+                                    <div class="card-product__descr-bonus-popup"><a href="#">Подробнее </a></div>
+                                  </div>
+                                </div>
+                          </div>
+                          <div class="card-product__favorites"></div>
+                        </article>
+                  </div>
+                  <div class="swiper-slide">
+                        <!-- карточка товара(чтобы показать что товара нет в наличии, то надо добавить класс .no-availability)-->
+                        <article class="card-product">
+                          <div class="card-product__info">
+                            <div class="card-product__info-procent">-12%</div>
+                            <div class="card-product__info-wrap">
+                              <div class="card-product__info-new">Новинка</div>
+                                  <svg class="card-product__info-heart js_card_product_info_heart" width="28" height="25" viewbox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.6364 4.23829L13.9979 4.61672L14.3594 4.23829C15.5566 2.98516 17.6338 1.28644 19.993 1.28644C22.0953 1.28644 23.8505 2.01729 25.0788 3.24353C26.3071 4.4697 27.0388 6.22128 27.0388 8.31875C27.0388 10.6168 26.1366 12.5211 24.755 14.2431C23.3638 15.977 21.5115 17.497 19.6392 19.0311C17.8858 20.4671 16.028 21.9887 14.5938 23.6839C14.4539 23.849 14.2493 23.9443 14.0348 23.9443H13.9635C13.7494 23.9443 13.5442 23.8496 13.4036 23.6844C11.9838 22.0032 10.1436 20.4938 8.40511 19.0678L8.36056 19.0312L8.36036 19.0311C6.48748 17.4964 4.63544 15.9762 3.24473 14.2422C1.86361 12.5202 0.961914 10.6162 0.961914 8.31875C0.961914 6.22128 1.69362 4.46972 2.92206 3.24355C4.15057 2.01732 5.90602 1.28644 8.00899 1.28644C10.3667 1.28644 12.4388 2.98475 13.6364 4.23829Z"></path>
+                                  </svg>
+                            </div>
+                          </div>
+                          <div class="card-product__images"><a href="#"><img src="img/card-product-img4.png" alt="фото товара"></a></div>
+                          <div class="card-product__descr"><a class="card-product__descr-title" href="#">Коляска прогулочная Babyton Active Red E52 Коляска прогулочная  E52 Коляска прогулочная E52 Коляска прогулочная оляска прогулочная оляска прогулочнаяоляска прогулочная</a>
+                                <div class="card-product__descr-rating">
+                                  <div class="card-product__descr-rating-stars">
+                                    <div class="card-product__descr-rating-stars-bg-gray"></div>
+                                    <div class="card-product__descr-rating-stars-bg-yellow" style="width: 92%"></div>
+                                    <div class="card-product__descr-rating-stars-bg-stars"></div>
+                                  </div>
+                                  <div class="card-product__descr-rating-quantity"><span>21</span></div>
+                                </div>
+                            <div class="card-product__descr-price"><span>15 888</span><span>19 859</span></div>
+                                <div class="card-product__descr-bonus"><span>+299 Бонусов</span>
+                                  <div class="card-product__descr-bonus-wrap js_card_product_descr_bonus">
+                                    <svg class="js_bonus_quantity" width="19" height="19" viewbox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M9.5 0.3125C4.42637 0.3125 0.3125 4.42637 0.3125 9.5C0.3125 14.5736 4.42637 18.6875 9.5 18.6875C14.5736 18.6875 18.6875 14.5736 18.6875 9.5C18.6875 4.42637 14.5736 0.3125 9.5 0.3125ZM9.5 14.832C9.04678 14.832 8.67969 14.4649 8.67969 14.0117C8.67969 13.5585 9.04678 13.1914 9.5 13.1914C9.95322 13.1914 10.3203 13.5585 10.3203 14.0117C10.3203 14.4649 9.95322 14.832 9.5 14.832ZM10.7899 10.3306C10.6042 10.4023 10.4444 10.5283 10.3314 10.6922C10.2183 10.8561 10.1573 11.0502 10.1562 11.2493V11.7148C10.1562 11.8051 10.0824 11.8789 9.99219 11.8789H9.00781C8.91758 11.8789 8.84375 11.8051 8.84375 11.7148V11.2739C8.84375 10.8002 8.98115 10.3326 9.25185 9.94297C9.51641 9.56152 9.88555 9.27031 10.3203 9.1042C11.0176 8.83555 11.4688 8.25107 11.4688 7.61328C11.4688 6.70889 10.5849 5.97266 9.5 5.97266C8.41514 5.97266 7.53125 6.70889 7.53125 7.61328V7.76914C7.53125 7.85938 7.45742 7.9332 7.36719 7.9332H6.38281C6.29258 7.9332 6.21875 7.85938 6.21875 7.76914V7.61328C6.21875 6.80732 6.57148 6.05469 7.21133 5.49482C7.82656 4.95547 8.63867 4.66016 9.5 4.66016C10.3613 4.66016 11.1734 4.95752 11.7887 5.49482C12.4285 6.05469 12.7812 6.80732 12.7812 7.61328C12.7812 8.79863 11.9999 9.86504 10.7899 10.3306Z" fill="#489ED7"></path>
+                                    </svg>
+                                    <div class="card-product__descr-bonus-popup"><a href="#">Подробнее </a></div>
+                                  </div>
+                                </div>
+                          </div>
+                          <div class="card-product__favorites"></div>
+                        </article>
+                  </div>
+                  <div class="swiper-slide">
+                        <!-- карточка товара(чтобы показать что товара нет в наличии, то надо добавить класс .no-availability)-->
+                        <article class="card-product">
+                          <div class="card-product__info">
+                            <div class="card-product__info-procent">-12%</div>
+                            <div class="card-product__info-wrap">
+                              <div class="card-product__info-new">Новинка</div>
+                                  <svg class="card-product__info-heart js_card_product_info_heart" width="28" height="25" viewbox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.6364 4.23829L13.9979 4.61672L14.3594 4.23829C15.5566 2.98516 17.6338 1.28644 19.993 1.28644C22.0953 1.28644 23.8505 2.01729 25.0788 3.24353C26.3071 4.4697 27.0388 6.22128 27.0388 8.31875C27.0388 10.6168 26.1366 12.5211 24.755 14.2431C23.3638 15.977 21.5115 17.497 19.6392 19.0311C17.8858 20.4671 16.028 21.9887 14.5938 23.6839C14.4539 23.849 14.2493 23.9443 14.0348 23.9443H13.9635C13.7494 23.9443 13.5442 23.8496 13.4036 23.6844C11.9838 22.0032 10.1436 20.4938 8.40511 19.0678L8.36056 19.0312L8.36036 19.0311C6.48748 17.4964 4.63544 15.9762 3.24473 14.2422C1.86361 12.5202 0.961914 10.6162 0.961914 8.31875C0.961914 6.22128 1.69362 4.46972 2.92206 3.24355C4.15057 2.01732 5.90602 1.28644 8.00899 1.28644C10.3667 1.28644 12.4388 2.98475 13.6364 4.23829Z"></path>
+                                  </svg>
+                            </div>
+                          </div>
+                          <div class="card-product__images"><a href="#"><img src="img/card-product-img5.png" alt="фото товара"></a></div>
+                          <div class="card-product__descr"><a class="card-product__descr-title" href="#">Коляска прогулочная Babyton Active Red E52 Коляска прогулочная  E52 Коляска прогулочная E52 Коляска прогулочная оляска прогулочная оляска прогулочнаяоляска прогулочная</a>
+                                <div class="card-product__descr-rating">
+                                  <div class="card-product__descr-rating-stars">
+                                    <div class="card-product__descr-rating-stars-bg-gray"></div>
+                                    <div class="card-product__descr-rating-stars-bg-yellow" style="width: 92%"></div>
+                                    <div class="card-product__descr-rating-stars-bg-stars"></div>
+                                  </div>
+                                  <div class="card-product__descr-rating-quantity"><span>21</span></div>
+                                </div>
+                            <div class="card-product__descr-price"><span>15 888</span><span>19 859</span></div>
+                                <div class="card-product__descr-bonus"><span>+299 Бонусов</span>
+                                  <div class="card-product__descr-bonus-wrap js_card_product_descr_bonus">
+                                    <svg class="js_bonus_quantity" width="19" height="19" viewbox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M9.5 0.3125C4.42637 0.3125 0.3125 4.42637 0.3125 9.5C0.3125 14.5736 4.42637 18.6875 9.5 18.6875C14.5736 18.6875 18.6875 14.5736 18.6875 9.5C18.6875 4.42637 14.5736 0.3125 9.5 0.3125ZM9.5 14.832C9.04678 14.832 8.67969 14.4649 8.67969 14.0117C8.67969 13.5585 9.04678 13.1914 9.5 13.1914C9.95322 13.1914 10.3203 13.5585 10.3203 14.0117C10.3203 14.4649 9.95322 14.832 9.5 14.832ZM10.7899 10.3306C10.6042 10.4023 10.4444 10.5283 10.3314 10.6922C10.2183 10.8561 10.1573 11.0502 10.1562 11.2493V11.7148C10.1562 11.8051 10.0824 11.8789 9.99219 11.8789H9.00781C8.91758 11.8789 8.84375 11.8051 8.84375 11.7148V11.2739C8.84375 10.8002 8.98115 10.3326 9.25185 9.94297C9.51641 9.56152 9.88555 9.27031 10.3203 9.1042C11.0176 8.83555 11.4688 8.25107 11.4688 7.61328C11.4688 6.70889 10.5849 5.97266 9.5 5.97266C8.41514 5.97266 7.53125 6.70889 7.53125 7.61328V7.76914C7.53125 7.85938 7.45742 7.9332 7.36719 7.9332H6.38281C6.29258 7.9332 6.21875 7.85938 6.21875 7.76914V7.61328C6.21875 6.80732 6.57148 6.05469 7.21133 5.49482C7.82656 4.95547 8.63867 4.66016 9.5 4.66016C10.3613 4.66016 11.1734 4.95752 11.7887 5.49482C12.4285 6.05469 12.7812 6.80732 12.7812 7.61328C12.7812 8.79863 11.9999 9.86504 10.7899 10.3306Z" fill="#489ED7"></path>
+                                    </svg>
+                                    <div class="card-product__descr-bonus-popup"><a href="#">Подробнее </a></div>
+                                  </div>
+                                </div>
+                          </div>
+                          <div class="card-product__favorites"></div>
+                        </article>
+                  </div>
+                  <div class="swiper-slide">
+                        <!-- карточка товара(чтобы показать что товара нет в наличии, то надо добавить класс .no-availability)-->
+                        <article class="card-product">
+                          <div class="card-product__info">
+                            <div class="card-product__info-procent">-12%</div>
+                            <div class="card-product__info-wrap">
+                              <div class="card-product__info-new">Новинка</div>
+                                  <svg class="card-product__info-heart js_card_product_info_heart" width="28" height="25" viewbox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.6364 4.23829L13.9979 4.61672L14.3594 4.23829C15.5566 2.98516 17.6338 1.28644 19.993 1.28644C22.0953 1.28644 23.8505 2.01729 25.0788 3.24353C26.3071 4.4697 27.0388 6.22128 27.0388 8.31875C27.0388 10.6168 26.1366 12.5211 24.755 14.2431C23.3638 15.977 21.5115 17.497 19.6392 19.0311C17.8858 20.4671 16.028 21.9887 14.5938 23.6839C14.4539 23.849 14.2493 23.9443 14.0348 23.9443H13.9635C13.7494 23.9443 13.5442 23.8496 13.4036 23.6844C11.9838 22.0032 10.1436 20.4938 8.40511 19.0678L8.36056 19.0312L8.36036 19.0311C6.48748 17.4964 4.63544 15.9762 3.24473 14.2422C1.86361 12.5202 0.961914 10.6162 0.961914 8.31875C0.961914 6.22128 1.69362 4.46972 2.92206 3.24355C4.15057 2.01732 5.90602 1.28644 8.00899 1.28644C10.3667 1.28644 12.4388 2.98475 13.6364 4.23829Z"></path>
+                                  </svg>
+                            </div>
+                          </div>
+                          <div class="card-product__images"><a href="#"><img src="img/card-product-img6.png" alt="фото товара"></a></div>
+                          <div class="card-product__descr"><a class="card-product__descr-title" href="#">Коляска прогулочная Babyton Active Red E52 Коляска прогулочная  E52 Коляска прогулочная E52 Коляска прогулочная оляска прогулочная оляска прогулочнаяоляска прогулочная</a>
+                                <div class="card-product__descr-rating">
+                                  <div class="card-product__descr-rating-stars">
+                                    <div class="card-product__descr-rating-stars-bg-gray"></div>
+                                    <div class="card-product__descr-rating-stars-bg-yellow" style="width: 92%"></div>
+                                    <div class="card-product__descr-rating-stars-bg-stars"></div>
+                                  </div>
+                                  <div class="card-product__descr-rating-quantity"><span>21</span></div>
+                                </div>
+                            <div class="card-product__descr-price"><span>15 888</span><span>19 859</span></div>
+                                <div class="card-product__descr-bonus"><span>+299 Бонусов</span>
+                                  <div class="card-product__descr-bonus-wrap js_card_product_descr_bonus">
+                                    <svg class="js_bonus_quantity" width="19" height="19" viewbox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M9.5 0.3125C4.42637 0.3125 0.3125 4.42637 0.3125 9.5C0.3125 14.5736 4.42637 18.6875 9.5 18.6875C14.5736 18.6875 18.6875 14.5736 18.6875 9.5C18.6875 4.42637 14.5736 0.3125 9.5 0.3125ZM9.5 14.832C9.04678 14.832 8.67969 14.4649 8.67969 14.0117C8.67969 13.5585 9.04678 13.1914 9.5 13.1914C9.95322 13.1914 10.3203 13.5585 10.3203 14.0117C10.3203 14.4649 9.95322 14.832 9.5 14.832ZM10.7899 10.3306C10.6042 10.4023 10.4444 10.5283 10.3314 10.6922C10.2183 10.8561 10.1573 11.0502 10.1562 11.2493V11.7148C10.1562 11.8051 10.0824 11.8789 9.99219 11.8789H9.00781C8.91758 11.8789 8.84375 11.8051 8.84375 11.7148V11.2739C8.84375 10.8002 8.98115 10.3326 9.25185 9.94297C9.51641 9.56152 9.88555 9.27031 10.3203 9.1042C11.0176 8.83555 11.4688 8.25107 11.4688 7.61328C11.4688 6.70889 10.5849 5.97266 9.5 5.97266C8.41514 5.97266 7.53125 6.70889 7.53125 7.61328V7.76914C7.53125 7.85938 7.45742 7.9332 7.36719 7.9332H6.38281C6.29258 7.9332 6.21875 7.85938 6.21875 7.76914V7.61328C6.21875 6.80732 6.57148 6.05469 7.21133 5.49482C7.82656 4.95547 8.63867 4.66016 9.5 4.66016C10.3613 4.66016 11.1734 4.95752 11.7887 5.49482C12.4285 6.05469 12.7812 6.80732 12.7812 7.61328C12.7812 8.79863 11.9999 9.86504 10.7899 10.3306Z" fill="#489ED7"></path>
+                                    </svg>
+                                    <div class="card-product__descr-bonus-popup"><a href="#">Подробнее </a></div>
+                                  </div>
+                                </div>
+                          </div>
+                          <div class="card-product__favorites"></div>
+                        </article>
+                  </div>
+                  <div class="swiper-slide">
+                        <!-- карточка товара(чтобы показать что товара нет в наличии, то надо добавить класс .no-availability)-->
+                        <article class="card-product">
+                          <div class="card-product__info">
+                            <div class="card-product__info-procent">-12%</div>
+                            <div class="card-product__info-wrap">
+                              <div class="card-product__info-new">Новинка</div>
+                                  <svg class="card-product__info-heart js_card_product_info_heart" width="28" height="25" viewbox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.6364 4.23829L13.9979 4.61672L14.3594 4.23829C15.5566 2.98516 17.6338 1.28644 19.993 1.28644C22.0953 1.28644 23.8505 2.01729 25.0788 3.24353C26.3071 4.4697 27.0388 6.22128 27.0388 8.31875C27.0388 10.6168 26.1366 12.5211 24.755 14.2431C23.3638 15.977 21.5115 17.497 19.6392 19.0311C17.8858 20.4671 16.028 21.9887 14.5938 23.6839C14.4539 23.849 14.2493 23.9443 14.0348 23.9443H13.9635C13.7494 23.9443 13.5442 23.8496 13.4036 23.6844C11.9838 22.0032 10.1436 20.4938 8.40511 19.0678L8.36056 19.0312L8.36036 19.0311C6.48748 17.4964 4.63544 15.9762 3.24473 14.2422C1.86361 12.5202 0.961914 10.6162 0.961914 8.31875C0.961914 6.22128 1.69362 4.46972 2.92206 3.24355C4.15057 2.01732 5.90602 1.28644 8.00899 1.28644C10.3667 1.28644 12.4388 2.98475 13.6364 4.23829Z"></path>
+                                  </svg>
+                            </div>
+                          </div>
+                          <div class="card-product__images"><a href="#"><img src="img/card-product-img7.png" alt="фото товара"></a></div>
+                          <div class="card-product__descr"><a class="card-product__descr-title" href="#">Коляска прогулочная Babyton Active Red E52 Коляска прогулочная  E52 Коляска прогулочная E52 Коляска прогулочная оляска прогулочная оляска прогулочнаяоляска прогулочная</a>
+                                <div class="card-product__descr-rating">
+                                  <div class="card-product__descr-rating-stars">
+                                    <div class="card-product__descr-rating-stars-bg-gray"></div>
+                                    <div class="card-product__descr-rating-stars-bg-yellow" style="width: 92%"></div>
+                                    <div class="card-product__descr-rating-stars-bg-stars"></div>
+                                  </div>
+                                  <div class="card-product__descr-rating-quantity"><span>21</span></div>
+                                </div>
+                            <div class="card-product__descr-price"><span>15 888</span><span>19 859</span></div>
+                                <div class="card-product__descr-bonus"><span>+299 Бонусов</span>
+                                  <div class="card-product__descr-bonus-wrap js_card_product_descr_bonus">
+                                    <svg class="js_bonus_quantity" width="19" height="19" viewbox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M9.5 0.3125C4.42637 0.3125 0.3125 4.42637 0.3125 9.5C0.3125 14.5736 4.42637 18.6875 9.5 18.6875C14.5736 18.6875 18.6875 14.5736 18.6875 9.5C18.6875 4.42637 14.5736 0.3125 9.5 0.3125ZM9.5 14.832C9.04678 14.832 8.67969 14.4649 8.67969 14.0117C8.67969 13.5585 9.04678 13.1914 9.5 13.1914C9.95322 13.1914 10.3203 13.5585 10.3203 14.0117C10.3203 14.4649 9.95322 14.832 9.5 14.832ZM10.7899 10.3306C10.6042 10.4023 10.4444 10.5283 10.3314 10.6922C10.2183 10.8561 10.1573 11.0502 10.1562 11.2493V11.7148C10.1562 11.8051 10.0824 11.8789 9.99219 11.8789H9.00781C8.91758 11.8789 8.84375 11.8051 8.84375 11.7148V11.2739C8.84375 10.8002 8.98115 10.3326 9.25185 9.94297C9.51641 9.56152 9.88555 9.27031 10.3203 9.1042C11.0176 8.83555 11.4688 8.25107 11.4688 7.61328C11.4688 6.70889 10.5849 5.97266 9.5 5.97266C8.41514 5.97266 7.53125 6.70889 7.53125 7.61328V7.76914C7.53125 7.85938 7.45742 7.9332 7.36719 7.9332H6.38281C6.29258 7.9332 6.21875 7.85938 6.21875 7.76914V7.61328C6.21875 6.80732 6.57148 6.05469 7.21133 5.49482C7.82656 4.95547 8.63867 4.66016 9.5 4.66016C10.3613 4.66016 11.1734 4.95752 11.7887 5.49482C12.4285 6.05469 12.7812 6.80732 12.7812 7.61328C12.7812 8.79863 11.9999 9.86504 10.7899 10.3306Z" fill="#489ED7"></path>
+                                    </svg>
+                                    <div class="card-product__descr-bonus-popup"><a href="#">Подробнее </a></div>
+                                  </div>
+                                </div>
+                          </div>
+                          <div class="card-product__favorites"></div>
+                        </article>
+                  </div>
+                </div>
+                <div class="main-banner-slider__control">
+                  <div class="swiper-pagination"> </div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              </div>
+            </section>
+          </section>
+        </div>
+      </div>
+    </main>
+    <!-- модальные окна-->
+        <!--POPUP СТАТУС ЗАКАЗА-->
+        <section class="popup-status-order js_popup_status_order">
+          <div class="popup-status-order__content js_popup_status_order_content">
+            <svg class="popup-status-order__content-close-mobile js_popup_status_order_close" width="31" height="20" viewbox="0 0 31 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5639 0.419605C11.6978 0.552278 11.8041 0.709888 11.8766 0.883408C11.9491 1.05693 11.9864 1.24295 11.9864 1.43081C11.9864 1.61868 11.9491 1.8047 11.8766 1.97822C11.8041 2.15174 11.6978 2.30935 11.5639 2.44202L3.95093 10.0004L11.5639 17.5587C11.834 17.8269 11.9857 18.1907 11.9857 18.5699C11.9857 18.9492 11.834 19.313 11.5639 19.5811C11.2939 19.8493 10.9277 20 10.5458 20C10.1639 20 9.79769 19.8493 9.52766 19.5811L0.899406 11.0116C0.765487 10.8789 0.659235 10.7213 0.58674 10.5478C0.514244 10.3743 0.476928 10.1882 0.476928 10.0004C0.476928 9.81251 0.514244 9.62649 0.58674 9.45297C0.659235 9.27945 0.765487 9.12184 0.899406 8.98917L9.52766 0.419605C9.66124 0.286596 9.81993 0.181067 9.99464 0.109065C10.1693 0.037062 10.3566 4.28918e-07 10.5458 4.3713e-07C10.7349 4.45342e-07 10.9222 0.037062 11.0969 0.109065C11.2717 0.181068 11.4303 0.286596 11.5639 0.419605Z" fill="#489ED7"></path>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M30.2341 10.0005C30.2341 10.3793 30.0825 10.7426 29.8129 11.0105C29.5432 11.2783 29.1774 11.4288 28.796 11.4288L3.091 11.4288C2.7096 11.4288 2.34383 11.2783 2.07415 11.0105C1.80446 10.7426 1.65295 10.3793 1.65295 10.0005C1.65295 9.62173 1.80446 9.25844 2.07415 8.99059C2.34383 8.72274 2.7096 8.57227 3.091 8.57227L28.796 8.57228C29.1774 8.57228 29.5432 8.72275 29.8129 8.9906C30.0825 9.25846 30.2341 9.62174 30.2341 10.0005Z" fill="#489ED7"></path>
+            </svg>
+            <svg class="popup-status-order__content-close js_popup_status_order_close">
+              <use xlink:href="img/sprite-svg.svg#popup-close"></use>
+            </svg>
+            <h2>Статус заказа</h2>
+            <form action=""> 
+              <input class="popup-status-order__content-input js_popup_status_order_content_input" type="text" arial-label="ввести номер заказа" placeholder="Введите номер заказа">
+              <button class="popup-status-order__content-button" type="submit" arial-label="кнопка отправки данных заказа">Поиск</button>
+            </form>
+            <button class="popup-status-order__content-switching js_popup_status_order_content_switching">По номеру телефона</button>
+          </div>
+        </section>
+        <!--POPUP SEARCH-->
+        <section class="popup-search js_popup_search">
+          <form class="popup-search__form" action="">
+            <div class="popup-search__wrapper">
+              <input class="popup-search__input js_popup_search_input" type="text" arial-label="строка ввода поиска" placeholder="Я хочу купить...">
+              <button class="popup-search__button js_popup_search_button" type="submit" arial-label="начать поиск"></button>
+            </div>
+            <button class="popup-search__close js_popup_search_close" arial-label="закрыть модальное окно поиска"></button>
+            <!--результаты поиска-->
+            <div class="popup-search__result">
+              <div class="popup-search__result-item"><img src="img/busket-img1.png" alt="фото товара">
+                <div class="popup-search__result-item-text"><span>Подгузники Huggies Elite Soft для новорожденных 2 4-6кг 100шт</span><span>1500 ₽ за 1 шт.</span></div>
+              </div>
+              <div class="popup-search__result-item"><img src="img/busket-img1.png" alt="фото товара">
+                <div class="popup-search__result-item-text"><span>Подгузники Huggies Elite Soft для новорожденных 2 4-6кг 100шт</span></div>
+              </div>
+            </div>
+          </form>
+        </section>
+        <!-- popup ДОБАВИТЬ КАРТУ-->
+        <section class="popup-add-card js_popup_add_card">
+          <div class="popup-add-card__content js_popup_add_card_content">
+            <svg class="popup-add-card__close js_popup_add_card_close">
+              <use xlink:href="img/sprite-svg.svg#popup-close"></use>
+            </svg>
+            <svg class="popup-add-card__close-mobile js_popup_add_card_close" width="31" height="20" viewbox="0 0 31 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5639 0.419605C11.6978 0.552278 11.8041 0.709888 11.8766 0.883408C11.9491 1.05693 11.9864 1.24295 11.9864 1.43081C11.9864 1.61868 11.9491 1.8047 11.8766 1.97822C11.8041 2.15174 11.6978 2.30935 11.5639 2.44202L3.95093 10.0004L11.5639 17.5587C11.834 17.8269 11.9857 18.1907 11.9857 18.5699C11.9857 18.9492 11.834 19.313 11.5639 19.5811C11.2939 19.8493 10.9277 20 10.5458 20C10.1639 20 9.79769 19.8493 9.52766 19.5811L0.899406 11.0116C0.765487 10.8789 0.659235 10.7213 0.58674 10.5478C0.514244 10.3743 0.476928 10.1882 0.476928 10.0004C0.476928 9.81251 0.514244 9.62649 0.58674 9.45297C0.659235 9.27945 0.765487 9.12184 0.899406 8.98917L9.52766 0.419605C9.66124 0.286596 9.81993 0.181067 9.99464 0.109065C10.1693 0.037062 10.3566 4.28918e-07 10.5458 4.3713e-07C10.7349 4.45342e-07 10.9222 0.037062 11.0969 0.109065C11.2717 0.181068 11.4303 0.286596 11.5639 0.419605Z" fill="#489ED7"></path>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M30.2341 10.0005C30.2341 10.3793 30.0825 10.7426 29.8129 11.0105C29.5432 11.2783 29.1774 11.4288 28.796 11.4288L3.091 11.4288C2.7096 11.4288 2.34383 11.2783 2.07415 11.0105C1.80446 10.7426 1.65295 10.3793 1.65295 10.0005C1.65295 9.62173 1.80446 9.25844 2.07415 8.99059C2.34383 8.72274 2.7096 8.57227 3.091 8.57227L28.796 8.57228C29.1774 8.57228 29.5432 8.72275 29.8129 8.9906C30.0825 9.25846 30.2341 9.62174 30.2341 10.0005Z" fill="#489ED7"></path>
+            </svg>
+            <h1>Добавить карту</h1>
+            <form class="popup-add-card__form">
+              <input class="popup-add-card__form-input js_popup_add_card_form_input" type="text" name="number-card" placeholder="Номер карты" minlength="15" required>
+              <button class="popup-add-card__form-button-add js_popup_add_card_form_button_add">Добавить карту</button>
+              <button class="popup-add-card__form-button-delete js_popup_add_card_form_button_delete">
+                <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.419553 19.5804C0.286561 19.4477 0.181046 19.2901 0.109052 19.1166C0.0370584 18.9431 2.8125e-09 18.7571 0 18.5692C-2.8125e-09 18.3813 0.0370584 18.1953 0.109052 18.0218C0.181046 17.8483 0.28656 17.6907 0.419553 17.558L7.97984 9.99963L0.419553 2.44127C0.151396 2.17308 0.000748807 1.80934 0.000748804 1.43006C0.000748801 1.05079 0.151396 0.687044 0.419553 0.418855C0.687709 0.150666 1.05141 6.4281e-09 1.43064 0C1.80987 -6.42794e-09 2.17357 0.150666 2.44172 0.418855L11.0102 8.98842C11.1432 9.12109 11.2487 9.2787 11.3207 9.45222C11.3927 9.62574 11.4298 9.81176 11.4298 9.99963C11.4298 10.1875 11.3927 10.3735 11.3207 10.547C11.2487 10.7206 11.1432 10.8782 11.0102 11.0108L2.44172 19.5804C2.30907 19.7134 2.15148 19.8189 1.97798 19.8909C1.80448 19.9629 1.61848 20 1.43064 20C1.2428 20 1.0568 19.9629 0.883301 19.8909C0.709802 19.8189 0.55221 19.7134 0.419553 19.5804Z" fill="#E9477A"></path>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5804 19.5804C19.7134 19.4477 19.819 19.2901 19.8909 19.1166C19.9629 18.9431 20 18.7571 20 18.5692C20 18.3813 19.9629 18.1953 19.8909 18.0218C19.819 17.8483 19.7134 17.6907 19.5804 17.558L12.0202 9.99963L19.5804 2.44127C19.8486 2.17308 19.9993 1.80934 19.9993 1.43006C19.9993 1.05079 19.8486 0.687044 19.5804 0.418855C19.3123 0.150666 18.9486 6.4281e-09 18.5694 0C18.1901 -6.42794e-09 17.8264 0.150666 17.5583 0.418855L8.98976 8.98842C8.85677 9.12109 8.75125 9.2787 8.67926 9.45222C8.60727 9.62574 8.57021 9.81176 8.57021 9.99963C8.57021 10.1875 8.60727 10.3735 8.67926 10.547C8.75125 10.7206 8.85677 10.8782 8.98976 11.0108L17.5583 19.5804C17.6909 19.7134 17.8485 19.8189 18.022 19.8909C18.1955 19.9629 18.3815 20 18.5694 20C18.7572 20 18.9432 19.9629 19.1167 19.8909C19.2902 19.8189 19.4478 19.7134 19.5804 19.5804Z" fill="#E9477A"></path>
+                </svg><span>Удалить</span>
+              </button>
+            </form>
+          </div>
+        </section>
+    <!-- footer-->
+    <footer class="footer">
+      <div class="content-wrapper">
+        <div class="footer-wrap">
+          <div class="footer-column"> <a class="footer-logo" href="page-main.html"><img src="img/header-logo-mobile.svg" alt="логотип"></a>
+            <div class="footer-contacts"><a class="footer-contacts__item footer-contacts__phone" href="tel:88005508948">
+                <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.3332 14.0999V16.5999C18.3341 16.832 18.2866 17.0617 18.1936 17.2744C18.1006 17.487 17.9643 17.6779 17.7933 17.8348C17.6222 17.9917 17.4203 18.1112 17.2005 18.1855C16.9806 18.2599 16.7477 18.2875 16.5165 18.2666C13.9522 17.988 11.489 17.1117 9.32486 15.7083C7.31139 14.4288 5.60431 12.7217 4.32486 10.7083C2.91651 8.53426 2.04007 6.05908 1.76653 3.48325C1.7457 3.25281 1.77309 3.02055 1.84695 2.80127C1.9208 2.58199 2.03951 2.38049 2.1955 2.2096C2.3515 2.03871 2.54137 1.90218 2.75302 1.80869C2.96468 1.7152 3.19348 1.6668 3.42486 1.66658H5.92486C6.32928 1.6626 6.72136 1.80582 7.028 2.06953C7.33464 2.33324 7.53493 2.69946 7.59153 3.09992C7.69705 3.89997 7.89274 4.68552 8.17486 5.44158C8.28698 5.73985 8.31125 6.06401 8.24478 6.37565C8.17832 6.68729 8.02392 6.97334 7.79986 7.19992L6.74153 8.25825C7.92783 10.3445 9.65524 12.072 11.7415 13.2583L12.7999 12.1999C13.0264 11.9759 13.3125 11.8215 13.6241 11.755C13.9358 11.6885 14.2599 11.7128 14.5582 11.8249C15.3143 12.107 16.0998 12.3027 16.8999 12.4083C17.3047 12.4654 17.6744 12.6693 17.9386 12.9812C18.2029 13.2931 18.3433 13.6912 18.3332 14.0999Z" stroke="#E9477A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg><span>8 800 550 89 48</span></a>
+              <div class="footer-contacts__item footer-contacts__time"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M19.25 10C19.25 12.4533 18.2754 14.806 16.5407 16.5407C14.806 18.2754 12.4533 19.25 10 19.25C7.54675 19.25 5.19397 18.2754 3.45926 16.5407C1.72455 14.806 0.75 12.4533 0.75 10C0.75 7.54675 1.72455 5.19397 3.45926 3.45926C5.19397 1.72455 7.54675 0.75 10 0.75C12.4533 0.75 14.806 1.72455 16.5407 3.45926C18.2754 5.19397 19.25 7.54675 19.25 10Z" stroke="#E9477A" stroke-width="1.5"/>
+<path d="M14 14.0002L10 10.8634V3.3335" stroke="#E9477A" stroke-width="1.5"/>
+</svg><span>10:00 - 20:00</span>
+              </div><a class="footer-contacts__item footer-contacts__mail" href="#"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.33366 3.3335H16.667C17.5837 3.3335 18.3337 4.0835 18.3337 5.00016V15.0002C18.3337 15.9168 17.5837 16.6668 16.667 16.6668H3.33366C2.41699 16.6668 1.66699 15.9168 1.66699 15.0002V5.00016C1.66699 4.0835 2.41699 3.3335 3.33366 3.3335Z" stroke="#E9477A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.3337 5L10.0003 10.8333L1.66699 5" stroke="#E9477A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg><span>sales@moscvettorg.ru </span></a>
+              <div class="footer-contacts__messenger"><a href="#"> 
+                  <svg width="18" height="18" viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.293 2.62672C13.6124 0.942187 11.3744 0.015625 8.9959 0.015625C4.0866 0.015625 0.0917578 4.01051 0.0917578 8.91973C0.0917578 10.4879 0.500899 12.0201 1.27902 13.3718L0.015625 17.9843L4.73641 16.7449C6.03594 17.4548 7.49984 17.8279 8.99191 17.8279H8.99594C13.9012 17.8279 17.9843 13.833 17.9843 8.92379C17.9842 6.54531 16.9736 4.31129 15.293 2.62672Z" fill="#E9477A"></path>
+                    <path d="M8.99578 16.3281C7.66418 16.3281 6.36062 15.9712 5.22555 15.2973L4.95684 15.1369L2.15723 15.8708L2.90328 13.1394L2.7268 12.8587C1.9848 11.6795 1.5957 10.3198 1.5957 8.92002C1.5957 4.84096 4.91672 1.52002 8.9998 1.52002C10.9771 1.52002 12.8341 2.2901 14.23 3.68986C15.6257 5.08967 16.4841 6.94674 16.4801 8.92408C16.4801 13.0072 13.0748 16.3281 8.99578 16.3281Z" fill="white"></path>
+                    <path d="M13.055 10.7846C12.8344 10.6725 11.7395 10.1348 11.5349 10.0628C11.3304 9.98652 11.182 9.95047 11.0336 10.1751C10.8852 10.3997 10.46 10.8969 10.3276 11.0494C10.1993 11.1978 10.0669 11.2179 9.84633 11.1056C8.53879 10.4519 7.68051 9.93847 6.81816 8.4584C6.58953 8.06535 7.04684 8.0934 7.47191 7.24316C7.54418 7.09469 7.50809 6.96637 7.45184 6.85406C7.39574 6.74176 6.95051 5.6468 6.76602 5.20156C6.58555 4.7684 6.40105 4.82855 6.26465 4.82055C6.13633 4.8125 5.98785 4.8125 5.83953 4.8125C5.69109 4.8125 5.45047 4.86867 5.2459 5.08926C5.04137 5.31387 4.46777 5.85137 4.46777 6.94633C4.46777 8.04129 5.2659 9.10019 5.37422 9.24855C5.48648 9.39691 6.9425 11.643 9.17648 12.6097C10.5884 13.2193 11.1419 13.2714 11.8478 13.1671C12.2769 13.103 13.1634 12.6297 13.3479 12.1083C13.5323 11.5869 13.5323 11.1418 13.4762 11.0495C13.4241 10.9491 13.2756 10.893 13.055 10.7846Z" fill="#E9477A"></path>
+                  </svg></a><a href="#"> 
+                  <svg width="18" height="18" viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5979 1.76529C15.1523 1.35478 13.3486 0.0458361 9.32722 0.0283361C9.32722 0.0283361 4.58648 -0.255883 2.2775 1.86361C0.993161 3.14787 0.540505 5.03228 0.491364 7.3658C0.442223 9.69939 0.382575 14.0716 4.59699 15.2577H4.60047L4.59699 17.0684C4.59699 17.0684 4.56894 17.8018 5.05316 17.9492C5.6357 18.1317 5.97957 17.5738 6.5375 16.9737C6.84281 16.6438 7.26386 16.1596 7.5832 15.7911C10.4677 16.0333 12.682 15.4788 12.9346 15.3981C13.5171 15.2086 16.8121 14.7875 17.3455 10.4152C17.8999 5.90252 17.0788 3.05314 15.5979 1.76529Z" fill="#E9477A"></path>
+                    <path d="M16.0859 10.0853C15.6332 13.7346 12.9627 13.9663 12.4715 14.1242C12.2609 14.1908 10.3134 14.6751 7.86758 14.5172C7.86758 14.5172 6.04286 16.7174 5.47438 17.2894C5.2884 17.4754 5.08489 17.4578 5.0884 17.0894C5.0884 16.8473 5.10243 14.0821 5.10243 14.0821C5.09891 14.0821 5.09891 14.0821 5.10243 14.0821C1.53016 13.0925 1.74071 9.36939 1.7793 7.42185C1.81789 5.47435 2.18637 3.87771 3.27418 2.80396C5.22875 1.03185 9.25368 1.29506 9.25368 1.29506C12.6539 1.30908 14.2822 2.33369 14.6612 2.67759C15.9139 3.75138 16.5526 6.32006 16.0859 10.0853Z" fill="white"></path>
+                    <path d="M11.2083 7.25009C11.2223 7.55185 10.7696 7.57294 10.7556 7.2711C10.717 6.49911 10.3555 6.12368 9.61162 6.08157C9.30982 6.06399 9.33791 5.61134 9.63615 5.62892C10.6153 5.68153 11.1592 6.24298 11.2083 7.25009Z" fill="#E9477A"></path>
+                    <path d="M11.9202 7.64622C11.9553 6.15837 11.0254 4.99337 9.26029 4.86356C8.96201 4.84251 8.99361 4.38981 9.29193 4.41087C11.3272 4.55829 12.4115 5.95841 12.3729 7.65676C12.3694 7.95852 11.9131 7.94454 11.9202 7.64622Z" fill="#E9477A"></path>
+                    <path d="M13.5697 8.11703C13.5732 8.41883 13.117 8.4223 13.117 8.12055C13.0959 5.26066 11.1905 3.70262 8.87801 3.68508C8.57973 3.68156 8.57973 3.23242 8.87801 3.23242C11.4642 3.24996 13.5451 5.03605 13.5697 8.11703Z" fill="#E9477A"></path>
+                    <path d="M13.1731 11.5594V11.5665C12.7942 12.2332 12.0853 12.9702 11.3554 12.7351L11.3484 12.7245C10.608 12.5175 8.86404 11.6192 7.76216 10.7419C7.19369 10.2927 6.67431 9.76284 6.27427 9.25401C5.91287 8.80131 5.54795 8.2644 5.19353 7.61877C4.44611 6.26776 4.28119 5.6642 4.28119 5.6642C4.04607 4.93432 4.77947 4.22545 5.44966 3.84651H5.45673C5.77955 3.67803 6.08834 3.7342 6.29537 3.9833C6.29537 3.9833 6.73052 4.5026 6.91646 4.75885C7.09193 4.99744 7.32705 5.3799 7.44986 5.59397C7.66392 5.97643 7.53052 6.36596 7.32002 6.52733L6.89892 6.86424C6.6849 7.03615 6.71295 7.35549 6.71295 7.35549C6.71295 7.35549 7.33755 9.71713 9.67111 10.3137C9.67111 10.3137 9.99048 10.3418 10.1624 10.1277L10.4993 9.70662C10.6606 9.49608 11.0502 9.36276 11.4327 9.57682C11.9485 9.86803 12.6047 10.3207 13.0399 10.7313C13.2854 10.9313 13.3416 11.2367 13.1731 11.5594Z" fill="#E9477A"></path>
+                  </svg></a><span>8 800 550 89 48</span></div>
+              <div class="footer-contacts__social">
+                <div class="footer-contacts__social-title">Мы в соц.сетях:</div>
+                <div class="footer-contacts__social-link"><a class="footer-contacts__social-link-item" href="#" arial-label="ссылка на facebook">
+                    <svg width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15 1.5C7.53 1.5 1.5 7.53 1.5 15C1.5 22.47 7.53 28.5 15 28.5C15.42 28.5 15.81 28.47 16.2 28.44C16.2 25.29 16.2 22.17 16.2 19.02H13.02V15.48C14.1 15.48 15.15 15.48 16.23 15.48C16.23 14.31 16.23 13.11 16.23 11.94C16.23 9.81 17.97 8.04 20.13 8.04H23.79V10.59V11.4H21.39C20.61 11.4 19.98 12.03 19.98 12.81V15.48C20.58 15.48 21.18 15.48 21.75 15.48C22.38 15.48 23.04 15.48 23.67 15.48C23.52 16.65 23.34 17.85 23.19 19.02H19.95V27.54C24.96 25.59 28.5 20.7 28.5 15C28.5 7.53 22.47 1.5 15 1.5Z" fill="#489ED7"></path>
+                    </svg></a><a class="footer-contacts__social-link-item" href="#" arial-label="ссылка на twitter">
+                    <svg width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M14.9998 28.9639C22.7117 28.9639 28.9634 22.7122 28.9634 15.0003C28.9634 7.28835 22.7117 1.03662 14.9998 1.03662C7.28787 1.03662 1.03613 7.28835 1.03613 15.0003C1.03613 22.7122 7.28787 28.9639 14.9998 28.9639Z" fill="#489ED7"></path>
+                      <path d="M8.83159 9.88401C8.83159 9.88401 11.0461 12.3876 14.7116 12.7967C14.7116 12.7967 14.5371 10.7022 16.3971 9.53492C16.3971 9.53492 18.3171 8.2531 19.7734 10.1186C19.7734 10.1186 21.1698 9.82946 21.6934 9.48037C21.6934 9.48037 21.2843 10.2713 20.5861 10.9531L22.1571 10.6422L20.7007 12.2131C20.7007 12.2131 21.2843 17.5095 15.4916 20.3022C15.4916 20.3022 10.9807 21.9331 7.83887 19.7786C7.83887 19.7786 11.6789 19.1949 12.088 18.3222C12.088 18.3222 10.048 18.0876 9.52432 16.3422L10.6316 16.2822C10.6316 16.2822 8.71159 16.1076 8.47705 13.3695L9.75887 13.544C9.76432 13.5495 7.72432 12.9713 8.83159 9.88401Z" fill="white"></path>
+                    </svg></a><a class="footer-contacts__social-link-item" href="#" arial-label="ссылка на youtube">
+                    <svg width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M17.4041 14.7496L14.0351 13.1776C13.7411 13.0411 13.4996 13.1941 13.4996 13.5196V16.4806C13.4996 16.8061 13.7411 16.9591 14.0351 16.8226L17.4026 15.2506C17.6981 15.1126 17.6981 14.8876 17.4041 14.7496ZM14.9996 0.600098C7.04661 0.600098 0.599609 7.0471 0.599609 15.0001C0.599609 22.9531 7.04661 29.4001 14.9996 29.4001C22.9526 29.4001 29.3996 22.9531 29.3996 15.0001C29.3996 7.0471 22.9526 0.600098 14.9996 0.600098ZM14.9996 20.8501C7.62861 20.8501 7.49961 20.1856 7.49961 15.0001C7.49961 9.8146 7.62861 9.1501 14.9996 9.1501C22.3706 9.1501 22.4996 9.8146 22.4996 15.0001C22.4996 20.1856 22.3706 20.8501 14.9996 20.8501Z" fill="#489ED7"></path>
+                    </svg></a><a class="footer-contacts__social-link-item" href="#" arial-label="ссылка на instagram">
+                    <svg width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15.0068 10.1618C12.3386 10.1618 10.1611 12.3393 10.1611 15.0075C10.1611 17.6758 12.3386 19.8533 15.0068 19.8533C17.6751 19.8533 19.8526 17.6758 19.8526 15.0075C19.8526 12.3393 17.6751 10.1618 15.0068 10.1618ZM29.5404 15.0075C29.5404 13.0009 29.5585 11.0125 29.4459 9.00946C29.3332 6.68293 28.8024 4.61814 27.1012 2.91686C25.3962 1.21195 23.3351 0.68485 21.0086 0.572159C19.0019 0.459468 17.0135 0.477644 15.0105 0.477644C13.0038 0.477644 11.0154 0.459468 9.01239 0.572159C6.68586 0.68485 4.62107 1.21559 2.91979 2.91686C1.21488 4.62177 0.68778 6.68293 0.575089 9.00946C0.462397 11.0161 0.480573 13.0045 0.480573 15.0075C0.480573 17.0105 0.462397 19.0026 0.575089 21.0056C0.68778 23.3322 1.21852 25.3969 2.91979 27.0982C4.6247 28.8031 6.68586 29.3302 9.01239 29.4429C11.019 29.5556 13.0075 29.5374 15.0105 29.5374C17.0171 29.5374 19.0056 29.5556 21.0086 29.4429C23.3351 29.3302 25.3999 28.7995 27.1012 27.0982C28.8061 25.3933 29.3332 23.3322 29.4459 21.0056C29.5622 19.0026 29.5404 17.0142 29.5404 15.0075ZM15.0068 22.4633C10.8809 22.4633 7.55104 19.1335 7.55104 15.0075C7.55104 10.8816 10.8809 7.55174 15.0068 7.55174C19.1328 7.55174 22.4626 10.8816 22.4626 15.0075C22.4626 19.1335 19.1328 22.4633 15.0068 22.4633ZM22.768 8.98765C21.8047 8.98765 21.0267 8.20972 21.0267 7.24639C21.0267 6.28306 21.8047 5.50513 22.768 5.50513C23.7313 5.50513 24.5093 6.28306 24.5093 7.24639C24.5095 7.47513 24.4647 7.70169 24.3773 7.91308C24.2899 8.12447 24.1616 8.31654 23.9999 8.47829C23.8381 8.64003 23.6461 8.76828 23.4347 8.85569C23.2233 8.94309 22.9967 8.98794 22.768 8.98765Z" fill="#489ED7"></path>
+                    </svg></a><a class="footer-contacts__social-link-item" href="#" arial-label="ссылка на telegram">
+                    <svg width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15 0C6.71371 0 0 6.71371 0 15C0 23.2863 6.71371 30 15 30C23.2863 30 30 23.2863 30 15C30 6.71371 23.2863 0 15 0ZM22.3669 10.2762L19.9052 21.877C19.7238 22.6996 19.2339 22.8992 18.5504 22.5121L14.8004 19.748L12.9919 21.4899C12.7923 21.6895 12.623 21.8589 12.2359 21.8589L12.502 18.0423L19.4516 11.7641C19.754 11.498 19.3851 11.3468 18.9859 11.6129L10.3972 17.0202L6.69556 15.8649C5.89113 15.6109 5.87298 15.0605 6.86492 14.6734L21.3266 9.09677C21.998 8.85484 22.5847 9.26008 22.3669 10.2762Z" fill="#489ED7"></path>
+                    </svg></a><a class="footer-contacts__social-link-item" href="#" arial-label="ссылка на вконтакте">
+                    <svg width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M30 15C30 23.2852 23.2852 30 15 30C6.71484 30 0 23.2852 0 15C0 6.71484 6.71484 0 15 0C23.2852 0 30 6.71484 30 15Z" fill="#489ED7"></path>
+                      <path d="M15.3059 21.5915C15.7571 21.5915 15.9446 21.2927 15.9328 20.9177C15.9094 19.4997 16.4602 18.738 17.4563 19.7282C18.5578 20.8298 18.7864 21.5915 20.1282 21.5915C20.6379 21.5915 22.0032 21.5915 22.4953 21.5915C24.3586 21.5915 22.7004 19.7223 21.3879 18.5036C20.1399 17.3434 20.0813 17.32 21.1535 15.9255C22.4895 14.197 24.2356 11.9645 22.6887 11.9645C22.384 11.9645 22.6008 11.9645 19.7414 11.9645C19.1672 11.9645 19.1262 12.2985 18.927 12.779C18.1887 14.5134 16.7883 16.7634 16.2551 16.4177C15.6985 16.0602 15.9504 14.8415 15.9973 12.7263C16.009 12.1696 16.0032 11.7829 15.1536 11.5895C12.8215 11.0505 10.8059 12.111 11.6262 12.2634C12.7864 12.4802 12.675 14.7946 12.4055 15.8786C11.9309 17.7712 10.1555 14.3845 9.41722 12.697C9.23558 12.2927 9.18285 11.9645 8.54418 11.9645C8.19261 11.9645 6.6516 11.9645 6.13011 11.9645C5.66722 11.9645 5.43871 12.1755 5.60277 12.6091C5.76683 13.0427 7.63011 17.2087 9.8391 19.5876C11.884 21.7907 13.8996 21.5915 15.3059 21.5915Z" fill="#F4F6F9"></path>
+                    </svg></a></div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-column"> 
+            <nav>
+              <ul class="footer-link-list">
+                <li class="footer-link-list__item"><a href="#">Каталог</a></li>
+                <li class="footer-link-list__item"><a href="#">Блог</a></li>
+                <li class="footer-link-list__item"><a href="#">Бренды</a></li>
+                <li class="footer-link-list__item"><a href="#">Сотрудничество</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="footer-column"> 
+            <nav>
+              <ul class="footer-link-list">
+                <li class="footer-link-list__item js_footer_link_list_item sublist"> <span> Компания</span>
+                  <ul class="footer-link-list__sublist">
+                    <li> <a href="#"> О нас</a></li>
+                    <li> <a href="#"> Дисктонтная карта</a></li>
+                    <li> <a href="#"> Новости</a></li>
+                    <li> <a href="#"> Вакансии</a></li>
+                    <li> <a href="#"> Контакты</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="footer-column"> 
+            <nav>
+              <ul class="footer-link-list">
+                <li class="footer-link-list__item js_footer_link_list_item sublist"> <span>Информация</span>
+                  <ul class="footer-link-list__sublist">
+                    <li> <a href="#"> Доставка</a></li>
+                    <li> <a href="#"> Оплата</a></li>
+                    <li> <a href="#"> Возврат товара</a></li>
+                    <li> <a href="#"> Примерка</a></li>
+                    <li> <a href="#"> Условия гарантии</a></li>
+                    <li> <a href="#"> Публичная оферта</a></li>
+                    <li> <a href="#">
+                         Политика <br>конфиденциальности</a></li>
+                    <li> <a href="#"> Вопросы и ответы</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="footer-column"> 
+            <div class="footer-column__wrap">
+              <nav>
+                <ul class="footer-link-list">
+                  <li class="footer-link-list__item js_footer_link_list_item sublist"><span>Личный кабинет</span>
+                    <ul class="footer-link-list__sublist">
+                      <li> <a href="#"> Корзина</a></li>
+                      <li> <a href="#"> История покупок</a></li>
+                      <li> <a href="#"> Избранное</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+              <nav>
+                <ul class="footer-link-list">
+                  <li class="footer-link-list__item js_footer_link_list_item sublist"> <span>Магазины</span>
+                    <ul class="footer-link-list__sublist">
+                      <li> <a href="#"> Адреса магазинов</a></li>
+                      <li> <a href="#"> Акции в магазинах</a></li>
+                      <li> <a href="#">
+                           Подарочные<br>сертификаты</a></li>
+                      <li> <a href="#"> Вакансии</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <form class="footer-subscription-form js_footer_subscription_form" action="#" id="footer-subscription-email">
+              <input class="footer-subscription-form__input js_footer_subscription_form_input" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Ваш E-mail" arial-label="поле ввода email для рассылки">
+              <button class="footer-subscription-form__button js_footer_subscription_form_button" type="submit" form="footer-subscription-email" arial-label="подписаться на рассылку" disabled>Подписаться </button>
+              <input class="footer-subscription-form__consent-input js_footer_subscription_form_consent_input" type="checkbox" name="consent" id="consent">
+              <label class="footer-subscription-form__consent-label" for="consent">Даю согласие на обработку персональных данных.</label>
+            </form>
+          </div>
+        </div>
+        <div class="footer-info"><a class="footer-info__personal" href="#" target="_blank">Политика обработки персональных данных</a>
+          <div class="footer-info__copyright">© 2021 TIKI TOMI. Все права защищены.</div><a class="footer-info__developer" href="https://nologostudio.ru/" target="_blank">
+            <svg width="24" height="31" viewbox="0 0 24 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M20 31.001V26.001H24V31.001H20ZM23 27H21V30.001H23V27ZM19 14L23.985 14.018L24 24.001H19V14ZM20 23.001H23V15.003L20 15V23.001ZM13 0H24V12H13V0ZM15 10.001H22V2.001H15V10.001ZM17 15H13V23.001H16V20L15.015 19.987L15 19.001H17V24.001H12V14H17V15ZM8 31.001V26.001H9V30.001H11V26.001L11.998 26.003L12 31.001H8ZM9 2.001H2V12H0V0H11V12H9V2.001ZM0 29.004V26.001H3V27H1V28H3V31.001H0V30.004L2 30.001L1.992 29.004H0ZM4 24.001H0V14L1.015 14.018L1 23.001H4V24.001ZM5 14H10V24.001H5V14ZM6 23.001H9V15.003L6 15V23.001ZM7 27H6V31.001H5V27H4V26.001H7V27ZM15.999 27.004L17 27V30.001L15.999 29.984V27.004ZM16 27H14V30.001H16V31.001H13V26.001H16V27ZM19 31.001H18V26.001H19V31.001Z" fill="#A1A7B3"></path>
+            </svg>
+            <div class="footer-info__developer-text">Разработка сайта: <br>nologostudio.ru</div></a>
+        </div>
+      </div>
+    </footer>
+    <!-- noUiSlider-->
+    <script src="js/nouislider.min.js"> </script>
+    <!-- swiper -->
+    <script src="js/swiper-bundle.min.js"> </script>
+    <!-- основные скрипты проекта-->
+    <script src="js/main.js"></script>
+  </body>
+</html>
